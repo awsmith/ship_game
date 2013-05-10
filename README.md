@@ -1,2 +1,2 @@
-ship_game
-=========
+
+First game attempt
