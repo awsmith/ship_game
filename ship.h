@@ -1,4 +1,6 @@
 // Header file for ship class
+#include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
 
 #ifndef SHIP_H
 #define SHIP_H
@@ -6,6 +8,9 @@
 class ship
 {
   public:
+  		// Constructor
+		ship();
+		
 		// Controls
 		void handle_input();
 		
@@ -16,18 +21,17 @@ class ship
 		void show();
 		
 		// Return coordinates
-		const int get_x();
-		const int get_y();
+		const SDL_Rect get_xy();
 		
 		// Return hitbox
-		const SDL_Rect *get_hitBox();
+		const SDL_Rect get_hitBox();
 		
 		// Return health remaining
 		const int get_hp();
 		
 	private:
 		// Coordinates
-		int x, y;
+		SDL_Rect offset;
 		
 		// Hitbox
 		SDL_Rect hitBox;
@@ -36,10 +40,11 @@ class ship
 		int status;
 		
 		// Velocity
-		int v;
+		int v_x;
+		int v_y;
 		
 		// Image file
-		std::string;
+		std::string filename;
 		
 		// Current image frame
 		int frame;
