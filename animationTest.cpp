@@ -3,8 +3,8 @@
 // Headers
 #include <iostream>
 #include <string>
-#include "SDL.h"
-#include "SDL_image.h"
+#include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
 
 // Constants
 const int SCREEN_WIDTH = 640;
@@ -40,7 +40,7 @@ class Timer
   public:
 // Default constructor
   Timer();
-	
+
 	// The various clock actions
 	void start();
 	void stop();
@@ -133,7 +133,7 @@ int main(int argc, char *args[])
 		// Show the wall
 		SDL_FillRect(screen, &wall, SDL_MapRGB(screen->format, 0x77, 0x77, 0x77));
 
-		// Show the square on the screen	
+		// Show the square on the screen
 		mySquare.show();
 
 		// Update the screen
@@ -160,13 +160,13 @@ bool init()
 	}
 
 	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
-	
+
 	if(screen == NULL)
 	{
 		return false;
 	}
 	SDL_WM_SetCaption("Collision", NULL);
-	
+
 	return true;
 }
 
@@ -191,7 +191,7 @@ SDL_Surface *load_image(std::string filename)
 bool load_files()
 {
 	square = load_image("ship2.png");
-	
+
 	if(square == NULL)
 	{
 		return false;
@@ -363,12 +363,12 @@ void Timer::start()
 {
 	// Start the timer
 	started = true;
-	
+
 	// Unpause the timer
 	paused = false;
 
-	// Get the current clock time 
-	startTicks =SDL_GetTicks();	
+	// Get the current clock time
+	startTicks =SDL_GetTicks();
 }
 
 void Timer::stop()
@@ -395,7 +395,7 @@ int Timer::get_ticks()
 		else
 		{
 			// Return the current time minus the start time
-			return SDL_GetTicks() - startTicks;	
+			return SDL_GetTicks() - startTicks;
 		}
 
 	}
