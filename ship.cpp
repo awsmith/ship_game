@@ -23,6 +23,7 @@ ship::ship()
 }
 
 // Controls
+// TODO: how does it access event
 void ship::handle_input()
 {
 	if(event.type == SDL_KEYDOWN)
