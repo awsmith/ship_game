@@ -8,7 +8,7 @@
 // Constructor
 ship::ship()
 {
-  offset.x = 0;
+        offset.x = 0;
 	offset.y = 0;
 	status = 0;
 	v_x = 0;
@@ -47,11 +47,24 @@ void ship::handle_input()
 		}
 	}
 }
-		
+
 // Move ship and hitbox
+// TODO: check screen edges, move hitBox, check collisions(?)
 void ship::move()
 {
-// PLACEHOLDER
+  offset.x += v_x;
+
+  if(false)
+  {
+    offset.x -= v_x;
+  }
+
+  offset.y += v_y;
+
+  if(false)
+  {
+    offset.y -= v_y;
+  }
 }
 
 // Apply ship to a surface
