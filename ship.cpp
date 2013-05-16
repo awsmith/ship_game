@@ -77,7 +77,7 @@ void ship::show()
 // Return coordinates
 const SDL_Rect ship::get_xy()
 {
-// PLACEHOLDER
+  return offset;
 }
 
 // Return hitbox
