@@ -13,7 +13,7 @@ ship::ship()
 	status = 0;
 	v_x = 0;
 	v_y = 0;
-	file = "ship.png";
+	filename = "ship.png";
 	frame = 0;
 	hp = 1;
 	hitBox.x = 0;
@@ -23,7 +23,7 @@ ship::ship()
 }
 
 // Controls
-// TODO: how does it access event
+// TODO: how does it access event(should it be an argument?)
 void ship::handle_input()
 {
 	if(event.type == SDL_KEYDOWN)
