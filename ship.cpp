@@ -50,21 +50,25 @@ void ship::handle_input()
 }
 
 // Move ship and hitbox
-// TODO: check screen edges, move hitBox, check collisions(?)
+// TODO: check screen edges, check collisions(?)
 void ship::move()
 {
   offset.x += v_x;
+  hitBox.x += v_x;
 
   if(false)
   {
     offset.x -= v_x;
+    hitBox.x -= v_x;
   }
 
   offset.y += v_y;
+  hitBox.y += v_y;
 
   if(false)
   {
     offset.y -= v_y;
+    hitBox.y -= v_y;
   }
 }
 
