@@ -25,6 +25,13 @@ ship::ship()
 	hitBox.h = 35;
 }
 
+// Destructor
+ship::~ship()
+{
+	// All other variables handled once ship is out of scope?
+	SDL_FreeSurface(image)	
+}
+
 // Controls
 // TODO: how does it access event(should it be an argument?)
 void ship::handle_input()
