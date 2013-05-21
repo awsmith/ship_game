@@ -11,7 +11,10 @@ class ship
   public:
   		// Constructor
 		ship();
-
+		
+		// Destructor
+		~ship();
+		
 		// Controls
 		void handle_input();
 
