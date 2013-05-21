@@ -2,8 +2,10 @@
 // Has not been tested 13/05/11
 
 #include "ship.h"
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
+#include "utils.h"
+// By including utils.h including SDL.h and SDL_image.h may not be needed, will comment out for now
+//#include "SDL/SDL.h"
+//#include "SDL/SDL_image.h"
 
 // Constructor
 ship::ship()
@@ -13,6 +15,7 @@ ship::ship()
 	status = 0;
 	v_x = 0;
 	v_y = 0;
+	image = NULL; 
 	filename = "ship.png";
 	frame = 0;
 	hp = 1;
@@ -73,9 +76,9 @@ void ship::move()
 }
 
 // Apply ship to a surface
-void ship::show()
+void ship::show(SDL_Surface *destination) 
 {
-// PLACEHOLDER
+	apply_surface(offset.x, offset.y, image, screen, destination);
 }
 
 // Return coordinates
