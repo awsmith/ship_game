@@ -43,7 +43,10 @@ class ship
 		// Velocity
 		int v_x;
 		int v_y;
-
+	
+		// Surface for class image
+		SDL_Surface* image;
+		
 		// Image file
 		std::string filename;
 
