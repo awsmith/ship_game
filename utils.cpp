@@ -4,7 +4,7 @@
 #include "utils.h"
 
 //Functions
-//TODO: Comment funcitons
+//TODO: Comment functions
 
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip)
 {
