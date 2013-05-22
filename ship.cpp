@@ -29,7 +29,7 @@ ship::ship()
 ship::~ship()
 {
 	// All other variables handled once ship is out of scope?
-	SDL_FreeSurface(image)	
+	SDL_FreeSurface(image);
 }
 
 // Controls
@@ -37,7 +37,7 @@ void ship::handle_input(SDL_Event &event)
 {
 	if(event.type == SDL_KEYDOWN)
 	{
-		switch(event.key.keysm.sym)
+		switch(event.key.keysym.sym)
 		{
 			case SDLK_UP: v_x += 20; break;
 			case SDLK_DOWN: v_x -= 20; break;
@@ -48,7 +48,7 @@ void ship::handle_input(SDL_Event &event)
 
 	else if(event.type == SDL_KEYUP)
 	{
-		switch(event.key.keysm.sym)
+		switch(event.key.keysym.sym)
 		{
 			case SDLK_UP: v_x -= 20; break;
 			case SDLK_DOWN: v_x += 20; break;
@@ -68,7 +68,7 @@ void ship::move()
 	offset.y += v_y;
 	hitBox.y += v_y;
 
-	if(false)  
+	if(false)
 	{
 		offset.x -= v_x;
 		hitBox.x -= v_x;
