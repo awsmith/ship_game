@@ -15,7 +15,7 @@ ship::ship()
 	status = 0;
 	v_x = 0;
 	v_y = 0;
-	image = NULL; 
+	image = NULL;
 	filename = "ship.png";
 	frame = 0;
 	hp = 1;
@@ -33,7 +33,6 @@ ship::~ship()
 }
 
 // Controls
-// TODO: how does it access event(should it be an argument?) [Yes.]
 void ship::handle_input(SDL_Event &event)
 {
 	if(event.type == SDL_KEYDOWN)
