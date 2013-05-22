@@ -82,9 +82,9 @@ void ship::move()
 }
 
 // Apply ship to a surface
-void ship::show(SDL_Surface *destination) 
+void ship::show(SDL_Surface *destination)
 {
-	apply_surface(offset.x, offset.y, image, screen, destination);
+	apply_surface(offset.x, offset.y, image, destination);
 }
 
 // Return coordinates
