@@ -16,7 +16,7 @@ class ship
 		~ship();
 		
 		// Controls
-		void handle_input();
+		void handle_input(SDL_Event &event);
 
 		// Move ship and hitbox
 		void move();

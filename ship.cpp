@@ -33,8 +33,8 @@ ship::~ship()
 }
 
 // Controls
-// TODO: how does it access event(should it be an argument?)
-void ship::handle_input()
+// TODO: how does it access event(should it be an argument?) [Yes.]
+void ship::handle_input(SDL_Event &event)
 {
 	if(event.type == SDL_KEYDOWN)
 	{
@@ -63,23 +63,23 @@ void ship::handle_input()
 // TODO: check screen edges, check collisions(?)
 void ship::move()
 {
-  offset.x += v_x;
-  hitBox.x += v_x;
+	offset.x += v_x;
+	hitBox.x += v_x;
 
-  if(false)
-  {
-    offset.x -= v_x;
-    hitBox.x -= v_x;
-  }
+	offset.y += v_y;
+	hitBox.y += v_y;
 
-  offset.y += v_y;
-  hitBox.y += v_y;
+	if(false)  
+	{
+		offset.x -= v_x;
+		hitBox.x -= v_x;
+	}
 
-  if(false)
-  {
-    offset.y -= v_y;
-    hitBox.y -= v_y;
-  }
+	if(false) //  wat, both if statements will execute
+	{
+		offset.y -= v_y;
+		hitBox.y -= v_y;
+	}
 }
 
 // Apply ship to a surface
@@ -91,7 +91,7 @@ void ship::show(SDL_Surface *destination)
 // Return coordinates
 const SDL_Rect ship::get_xy()
 {
-  return offset;
+	return offset;
 }
 
 // Return hitbox
