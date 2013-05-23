@@ -15,7 +15,7 @@ ship::ship()
 	status = 0;
 	v_x = 0;
 	v_y = 0;
-	image = NULL; 
+	image = NULL;
 	filename = "ship.png";
 	frame = 0;
 	hp = 1;
@@ -29,16 +29,15 @@ ship::ship()
 ship::~ship()
 {
 	// All other variables handled once ship is out of scope?
-	SDL_FreeSurface(image)	
+	SDL_FreeSurface(image);
 }
 
 // Controls
-// TODO: how does it access event(should it be an argument?) [Yes.]
 void ship::handle_input(SDL_Event &event)
 {
 	if(event.type == SDL_KEYDOWN)
 	{
-		switch(event.key.keysm.sym)
+		switch(event.key.keysym.sym)
 		{
 			case SDLK_UP: v_x += 20; break;
 			case SDLK_DOWN: v_x -= 20; break;
@@ -49,7 +48,7 @@ void ship::handle_input(SDL_Event &event)
 
 	else if(event.type == SDL_KEYUP)
 	{
-		switch(event.key.keysm.sym)
+		switch(event.key.keysym.sym)
 		{
 			case SDLK_UP: v_x -= 20; break;
 			case SDLK_DOWN: v_x += 20; break;
@@ -69,7 +68,7 @@ void ship::move()
 	offset.y += v_y;
 	hitBox.y += v_y;
 
-	if(false)  
+	if(false)
 	{
 		offset.x -= v_x;
 		hitBox.x -= v_x;
@@ -83,9 +82,9 @@ void ship::move()
 }
 
 // Apply ship to a surface
-void ship::show(SDL_Surface *destination) 
+void ship::show(SDL_Surface *destination)
 {
-	apply_surface(offset.x, offset.y, image, screen, destination);
+	apply_surface(offset.x, offset.y, image, destination);
 }
 
 // Return coordinates
