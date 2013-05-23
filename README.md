@@ -1,6 +1,1 @@
-First game attempt
-
-
-Test push.
-
-Second push.
+First game attempt. Written in C++, uses SDL.
