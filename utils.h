@@ -8,6 +8,9 @@
 #include "SDL/SDL_image.h"
 #include <string>
 
+// May need to be moved to main, will need three ints and surface for function
+bool init();
+
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip = NULL);
 
 SDL_Surface *load_image(std::string filename);
