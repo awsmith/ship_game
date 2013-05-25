@@ -9,7 +9,7 @@
 #include <string>
 
 // May need to be moved to main, will need three ints and surface for function
-bool init(int width, int height, int bpp, SDL_Surface* screen);
+SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen);
 
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip = NULL);
 
