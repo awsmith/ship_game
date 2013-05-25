@@ -6,6 +6,20 @@
 //Functions
 //TODO: Comment functions
 
+bool init(int width, int height, int bpp, SDL_Surface* screen)
+{
+	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+	{
+		return false;
+	}
+	
+	screen = SDL_SetVideoMode(width, height, bpp, SDL_SWSURFACE);
+
+	SDL_WM_SetCaption("Game", NULL);
+
+	return true;
+}
+
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip)
 {
   //Make a temporary rectangle to hold the offsets
