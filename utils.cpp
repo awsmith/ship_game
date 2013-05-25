@@ -1,23 +1,29 @@
 //Utility functions used in ship game
-
+#include <iostream>
 
 #include "utils.h"
 
 //Functions
 //TODO: Comment functions
 
-bool init(int width, int height, int bpp, SDL_Surface* screen)
+// Initialize SDL stuff and the screen
+SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen)
 {
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
 	{
-		return false;
+		return NULL;
 	}
-	
+
 	screen = SDL_SetVideoMode(width, height, bpp, SDL_SWSURFACE);
+
+	if(screen == NULL)
+	{
+		return NULL;
+	}	
 
 	SDL_WM_SetCaption("Game", NULL);
 
-	return true;
+	return screen;
 }
 
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip)
