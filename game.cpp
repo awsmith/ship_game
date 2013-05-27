@@ -74,7 +74,7 @@ int main()
 
 		while(SDL_PollEvent(&event))
 		{
-			// Handle input from user. Only accepts up, down, left and right keys currently. 
+			// Handle input from user. Only accepts up, down, left and right keys currently.
 			myShip.handle_input(event);
 
 			// If the user X's out the window
@@ -83,12 +83,12 @@ int main()
 				// Exit event loop
 				quit = true;
 			}
-		}	
+		}
 
-		// Make the screen white	
-		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+		// Make the screen white
+		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0x00, 0x00 ) );
 
-		// Adjust the x and y coordinates of the ship and apply to screen	
+		// Adjust the x and y coordinates of the ship and apply to screen
 		myShip.move();
 		myShip.show(screen);
 
@@ -96,13 +96,13 @@ int main()
 
 		// TODO: Apply enemy and generated projectiles
 
-		// Refresh screen	
+		// Refresh screen
 		if(SDL_Flip(screen) == -1)
 		{
 			return 0;
 		}
-	
-		// Cap the frame rate if game is running too fast	
+
+		// Cap the frame rate if game is running too fast
 		if(fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
 		{
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
@@ -203,4 +203,4 @@ bool Timer::is_started()
 bool Timer::is_paused()
 {
 	return paused;
-} 
+}
