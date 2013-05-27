@@ -25,7 +25,7 @@ ship::ship()
 	v_x = 0;
 	v_y = 0;
 	filename = "ship.png";
-	image = NULL;
+	image = load_image(filename);
 	frame = 0;
 	hp = 1;
 	hitBox.x = 0;
