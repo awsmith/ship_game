@@ -1,6 +1,6 @@
 // Implementation file for ship.h
 // Has not been tested 13/05/11
-
+#include <iostream>
 #include "ship.h"
 #include "utils.h"
 // By including utils.h including SDL.h and SDL_image.h may not be needed, will comment out for now
@@ -15,9 +15,9 @@ ship::ship()
 	offset[0].y = 0;
 	offset[0].w = 37;
 	offset[0].h = 32;
-
-        offset[1].x = 0;
-	offset[1].y = 40;
+	
+        offset[1].x = 40;
+	offset[1].y = 0;
 	offset[1].w = 37;
 	offset[1].h = 32;
 
@@ -26,12 +26,12 @@ ship::ship()
 	v_y = 0;
 	filename = "ship.png";
 	image = load_image(filename);
-	frame = 0;
+	frame = 1;
 	hp = 1;
 	hitBox.x = 0;
 	hitBox.y = 0;
-	hitBox.w = 40;
-	hitBox.h = 35;
+	hitBox.w = 37;
+	hitBox.h = 32;
 }
 
 // Destructor
@@ -48,10 +48,10 @@ void ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_y -= 2; break;
-			case SDLK_DOWN: v_y += 2; break;
-			case SDLK_LEFT: v_x -= 2; break;
-			case SDLK_RIGHT: v_x += 2; break;
+			case SDLK_UP: v_y -= hitBox.h / 2; break;
+			case SDLK_DOWN: v_y += hitBox.h / 2; break;
+			case SDLK_LEFT: v_x -= hitBox.w / 2; break;
+			case SDLK_RIGHT: v_x += hitBox.w / 2; break;
 		}
 	}
 
@@ -59,10 +59,10 @@ void ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_y += 2; break;
-			case SDLK_DOWN: v_y -= 2; break;
-			case SDLK_LEFT: v_x += 2; break;
-			case SDLK_RIGHT: v_x -= 2; break;
+			case SDLK_UP: v_y += hitBox.h / 2; break;
+			case SDLK_DOWN: v_y -= hitBox.h / 2; break;
+			case SDLK_LEFT: v_x += hitBox.w / 2; break;
+			case SDLK_RIGHT: v_x -= hitBox.w / 2; break;
 		}
 	}
 }
@@ -71,6 +71,7 @@ void ship::handle_input(SDL_Event &event)
 // TODO: check screen edges, check collisions(?)
 void ship::move()
 {
+	std::cout << "Current frame = " << frame << std::endl;
 //	offset.x += v_x;
 	hitBox.x += v_x;
 
@@ -94,10 +95,13 @@ void ship::move()
 void ship::show(SDL_Surface *destination)
 {
 	apply_surface(hitBox.x, hitBox.y, image, destination, &offset[frame]);
-
+	frame++;
+	if(frame >= 2)
+	{
+		frame = 0;
+	}
 }
 
-// Return coordinates
 const SDL_Rect ship::get_xy()
 {
 	return hitBox;
