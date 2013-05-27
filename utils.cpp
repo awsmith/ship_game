@@ -19,7 +19,7 @@ SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen)
 	if(screen == NULL)
 	{
 		return NULL;
-	}	
+	}
 
 	SDL_WM_SetCaption("Game", NULL);
 
@@ -65,7 +65,7 @@ SDL_Surface *load_image(std::string filename)
   if(optimizedImage != NULL)
   {
     //Map the color key
-    Uint32 colorkey = SDL_MapRGB(optimizedImage->format, 0, 0xFF, 0xFF);
+    Uint32 colorkey = SDL_MapRGB(optimizedImage->format, 0xFF, 0xFF, 0xFF);
 
     //Set all pixels of color R 0, G 0xFF, B 0xFF to be transparent
     SDL_SetColorKey(optimizedImage, SDL_SRCCOLORKEY, colorkey);
