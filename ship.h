@@ -37,7 +37,7 @@ class ship
 
 	private:
 		// Coordinates
-		SDL_Rect offset;
+		SDL_Rect offset[2];
 
 		// Hitbox
 		SDL_Rect hitBox;
