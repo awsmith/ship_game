@@ -22,8 +22,6 @@ class ship
 		void move();
 
 		// Apply ship to a surface
-		/* If show calls apply_surface from utils.h there is no reference to screen outside of main
-		   Pass screen as arugment to show()? */
 		void show(SDL_Surface *destination);
 
 		// Return coordinates
@@ -34,6 +32,12 @@ class ship
 
 		// Return health remaining
 		const int get_hp();
+
+		// Return ship surface
+		SDL_Surface *get_image();
+
+		// Surface image for ship	
+		SDL_Surface* image;
 
 	private:
 		// Coordinates
@@ -48,11 +52,6 @@ class ship
 		// Velocity
 		int v_x;
 		int v_y;
-	
-		// Surface for class image
-		/* If surfaces are local to their class there's no need to deal with the surface manually
-		   Maybe? */
-		SDL_Surface* image;
 		
 		// Image file
 		std::string filename;
