@@ -86,7 +86,7 @@ int main()
 		}
 
 		// Make the screen white
-		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0x00, 0x00 ) );
+		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0xFF, 0xFF ) );
 
 		// Adjust the x and y coordinates of the ship and apply to screen
 		myShip.move();
