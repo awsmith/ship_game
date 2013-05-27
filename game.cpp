@@ -49,6 +49,7 @@ int main()
 
 	screen = init(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, screen);
 
+	ship myShip;
 	Timer fps;
 	fps.start();
 
@@ -66,9 +67,13 @@ int main()
 			{
 				quit = true;
 			}
+			myShip.handle_input(event);
 		}	
 		// Make the screen white	
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+	//	apply_surface(0, 0, myShip.image, screen);
+		myShip.move();
+		myShip.show(screen);
 		// Apply player and generated prjoectiles
 
 		// Apply enemy and generated projectiles
