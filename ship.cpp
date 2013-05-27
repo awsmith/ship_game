@@ -71,7 +71,6 @@ void ship::handle_input(SDL_Event &event)
 // TODO:check collisions(?)
 void ship::move()
 {
-	std::cout << "Current frame = " << frame << std::endl;
 	hitBox.x += v_x;
 
 	hitBox.y += v_y;
