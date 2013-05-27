@@ -10,12 +10,12 @@
 // Constructor
 ship::ship()
 {
-	
+
         offset[0].x = 0;
 	offset[0].y = 0;
 	offset[0].w = 37;
 	offset[0].h = 32;
-	
+
         offset[1].x = 40;
 	offset[1].y = 0;
 	offset[1].w = 37;
@@ -68,7 +68,7 @@ void ship::handle_input(SDL_Event &event)
 }
 
 // Move ship and hitbox
-// TODO: check screen edges, check collisions(?)
+// TODO:check collisions(?)
 void ship::move()
 {
 	std::cout << "Current frame = " << frame << std::endl;
