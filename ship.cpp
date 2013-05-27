@@ -77,13 +77,13 @@ void ship::move()
 //	offset.y += v_y;
 	hitBox.y += v_y;
 
-	if(false)
+	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
 	{
 //		offset.x -= v_x;
 		hitBox.x -= v_x;
 	}
 
-	if(false) //  wat, both if statements will execute
+	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480))
 	{
 //		offset.y -= v_y;
 		hitBox.y -= v_y;
