@@ -44,15 +44,14 @@ ship::~ship()
 // Controls
 void ship::handle_input(SDL_Event &event)
 {
-{
 	if(event.type == SDL_KEYDOWN)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_x += 20; break;
-			case SDLK_DOWN: v_x -= 20; break;
-			case SDLK_LEFT: v_y -= 20; break;
-			case SDLK_RIGHT: v_y += 20; break;
+			case SDLK_UP: v_y -= 2; break;
+			case SDLK_DOWN: v_y += 2; break;
+			case SDLK_LEFT: v_x -= 2; break;
+			case SDLK_RIGHT: v_x += 2; break;
 		}
 	}
 
@@ -60,10 +59,10 @@ void ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_x -= 20; break;
-			case SDLK_DOWN: v_x += 20; break;
-			case SDLK_LEFT: v_y += 20; break;
-			case SDLK_RIGHT: v_y -= 20; break;
+			case SDLK_UP: v_y += 2; break;
+			case SDLK_DOWN: v_y -= 2; break;
+			case SDLK_LEFT: v_x += 2; break;
+			case SDLK_RIGHT: v_x -= 2; break;
 		}
 	}
 }
