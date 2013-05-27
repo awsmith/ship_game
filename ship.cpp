@@ -72,21 +72,17 @@ void ship::handle_input(SDL_Event &event)
 void ship::move()
 {
 	std::cout << "Current frame = " << frame << std::endl;
-//	offset.x += v_x;
 	hitBox.x += v_x;
 
-//	offset.y += v_y;
 	hitBox.y += v_y;
 
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
 	{
-//		offset.x -= v_x;
 		hitBox.x -= v_x;
 	}
 
 	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480))
 	{
-//		offset.y -= v_y;
 		hitBox.y -= v_y;
 	}
 }
