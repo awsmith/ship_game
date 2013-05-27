@@ -48,10 +48,10 @@ void ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_y -= hitBox.h / 2; break;
-			case SDLK_DOWN: v_y += hitBox.h / 2; break;
-			case SDLK_LEFT: v_x -= hitBox.w / 2; break;
-			case SDLK_RIGHT: v_x += hitBox.w / 2; break;
+			case SDLK_UP: v_y -= hitBox.h / 4; break;
+			case SDLK_DOWN: v_y += hitBox.h / 4; break;
+			case SDLK_LEFT: v_x -= hitBox.w / 4; break;
+			case SDLK_RIGHT: v_x += hitBox.w / 4; break;
 		}
 	}
 
@@ -59,10 +59,10 @@ void ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_UP: v_y += hitBox.h / 2; break;
-			case SDLK_DOWN: v_y -= hitBox.h / 2; break;
-			case SDLK_LEFT: v_x += hitBox.w / 2; break;
-			case SDLK_RIGHT: v_x -= hitBox.w / 2; break;
+			case SDLK_UP: v_y += hitBox.h / 4; break;
+			case SDLK_DOWN: v_y -= hitBox.h / 4; break;
+			case SDLK_LEFT: v_x += hitBox.w / 4; break;
+			case SDLK_RIGHT: v_x -= hitBox.w / 4; break;
 		}
 	}
 }
