@@ -12,9 +12,6 @@ class ship
   		// Constructor
 		ship();
 		
-		// Destructor
-		~ship();
-		
 		// Controls
 		void handle_input(SDL_Event &event);
 
@@ -40,6 +37,9 @@ class ship
 		SDL_Surface* image;
 
 	private:
+		// Destructor
+		~ship();
+		
 		// Coordinates
 		SDL_Rect offset[2];
 
