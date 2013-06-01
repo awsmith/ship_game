@@ -14,6 +14,11 @@ SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen)
 		return NULL;
 	}
 
+	if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+	{
+		return false;
+	}
+
 	screen = SDL_SetVideoMode(width, height, bpp, SDL_SWSURFACE);
 
 	if(screen == NULL)
@@ -39,6 +44,19 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
   SDL_BlitSurface(source, clip, destination, &offset);
 }
 
+void handle_collisions(std::vector<ship> ships)
+{
+	int numShips = ships.size();
+	int numProjs = 0;	
+	for(int x = 0; x < numShips; x++)
+	{
+		// Set numProjs to size of projectile vector for ships[x]	
+		for(int y = 0; y < numProjs; y++)
+		{
+			// Check collision of ships[x] and projecticles
+		}
+	} 
+}
 
 SDL_Surface *load_image(std::string filename)
 {
