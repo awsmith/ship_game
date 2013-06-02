@@ -20,6 +20,8 @@ SDL_Surface *load_image(std::string filename);
 	
 void handle_collisions(std::vector<ship> ships);
 
+// TODO Add check collision function for handle collisions to call
+
 // TODO Should function be general purpose or load all files at once?
 bool load_files();
 
