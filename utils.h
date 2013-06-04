@@ -17,10 +17,10 @@ SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen);
 void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip = NULL);
 
 SDL_Surface *load_image(std::string filename);
-	
+
 void handle_collisions(std::vector<ship> ships);
 
-// TODO Add check collision function for handle collisions to call
+bool check_collision(SDL_Rect A, SDL_Rect B);
 
 // TODO Should function be general purpose or load all files at once?
 bool load_files();
