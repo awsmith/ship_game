@@ -25,7 +25,7 @@ class ship
 		void show(SDL_Surface *destination);
 
 		// Return coordinates
-		const SDL_Rect get_xy();
+		const SDL_Rect get_coords();
 
 		// Return hitbox
 		const SDL_Rect get_hitBox();

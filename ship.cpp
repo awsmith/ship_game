@@ -97,7 +97,7 @@ void ship::show(SDL_Surface *destination)
 	}
 }
 
-const SDL_Rect ship::get_xy()
+const SDL_Rect ship::get_coords()
 {
 	return hitBox;
 }
