@@ -47,15 +47,15 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 void handle_collisions(std::vector<ship> ships)
 {
 	int numShips = ships.size();
-	int numProjs = 0;	
+	int numProjs = 0;
 	for(int x = 0; x < numShips; x++)
 	{
-		// Set numProjs to size of projectile vector for ships[x]	
+		// Set numProjs to size of projectile vector for ships[x]
 		for(int y = 0; y < numProjs; y++)
 		{
 			// Check collision of ships[x] and projecticles
 		}
-	} 
+	}
 }
 
 SDL_Surface *load_image(std::string filename)
@@ -91,4 +91,29 @@ SDL_Surface *load_image(std::string filename)
 
   //Return the optimized image
   return optimizedImage;
+}
+
+bool check_collision(SDL_Rect A, SDL_Rect B)
+{
+  if(A.y + A.h <= B.y)
+  {
+    return false;
+  }
+
+  if(A.y >= B.y + B.h)
+  {
+    return false;
+  }
+
+  if(A.x + A.w <= B.x)
+  {
+    return false;
+  }
+
+  if(A.x >= B.x + B.w)
+  {
+    return false;
+  }
+
+  return true;
 }
