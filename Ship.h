@@ -10,10 +10,10 @@ class Ship
 {
   public:
   		// Constructor
-		ship();
+		Ship();
 
 		// Destructor
-		~ship();
+		~Ship();
 
 		// Controls
 		void handle_input(SDL_Event &event);

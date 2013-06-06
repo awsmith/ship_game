@@ -7,7 +7,7 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_mixer.h"
-#include "ship.h"
+#include "Ship.h"
 #include <string>
 #include <vector>
 
@@ -18,7 +18,7 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 
 SDL_Surface *load_image(std::string filename);
 
-void handle_collisions(std::vector<ship> ships);
+void handle_collisions(std::vector<Ship> ships);
 
 bool check_collision(SDL_Rect A, SDL_Rect B);
 

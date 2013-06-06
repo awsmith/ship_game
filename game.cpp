@@ -1,6 +1,6 @@
 #include <iostream>
 #include "utils.h"
-#include "ship.h"
+#include "Ship.h"
 #include "timer.h"
 
 // Game constants
@@ -31,7 +31,7 @@ int main()
 	}
 
 	// Class instances
-	ship myShip;
+	Ship myShip;
 	Timer fps;
 
 	// While the user has not quit
