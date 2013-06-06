@@ -44,9 +44,9 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
-void handle_collisions(std::vector<ship> ships)
+void handle_collisions(std::vector<Ship> ships)
 {
-	// Number of ships to check for collisions	
+	// Number of ships to check for collisions
 	int numShips = ships.size();
 	// Number of collisions to check against for current ship
 	int numProjs = 0;
@@ -69,7 +69,7 @@ void handle_collisions(std::vector<ship> ships)
 			// Check collision of ships[x] and projecticles
 			if(check_collision(shipHitBox, projHitBox))
 			{
-				// Increment hits for each collision detected  
+				// Increment hits for each collision detected
 				hits++;
 			}
 		}
@@ -78,7 +78,7 @@ void handle_collisions(std::vector<ship> ships)
 		if(hits > 0)
 		{
 			// Deal damage to ship based on number of hits
-			// TODO: Create take damage function for ship class 
+			// TODO: Create take damage function for ship class
 			hits = 0;
 		}
 
@@ -86,10 +86,10 @@ void handle_collisions(std::vector<ship> ships)
 		if(ships[x].get_hp <= 0)
 		{
 			// Blow up ship in a spectacular fashion
-			// TODO: Create destruction function for ship class 
+			// TODO: Create destruction function for ship class
 		}
 	}
-	
+
 }
 
 SDL_Surface *load_image(std::string filename)
