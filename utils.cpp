@@ -58,13 +58,11 @@ void handle_collisions(std::vector<Ship> ships)
 	for(int x = 0; x < numShips; x++)
 	{
 		// Store coordinates for current ship
-		shipHitBox = ships.getCoords;
 
 		// Set numProjs to size of projectile vector for ships[x]
 		for(int y = 0; y < numProjs; y++)
 		{
 			// TODO: Create projectile class, set to current projectile coords
-			projHitBox = NULL;
 
 			// Check collision of ships[x] and projecticles
 			if(check_collision(shipHitBox, projHitBox))
@@ -83,11 +81,6 @@ void handle_collisions(std::vector<Ship> ships)
 		}
 
 		// Check health status of current ship
-		if(ships[x].get_hp <= 0)
-		{
-			// Blow up ship in a spectacular fashion
-			// TODO: Create destruction function for ship class
-		}
 	}
 
 }
