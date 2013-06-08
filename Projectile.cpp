@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-Projectile::Projectile()
+Projectile::Projectile(SDL_Rect origin)
 {
   offset[0].x = 0;
   offset[0].y = 0;
@@ -21,8 +21,9 @@ Projectile::Projectile()
   filename = "ship.png";
   image = load_image(filename);
   frame = 1;
-  hitBox.x = 0;
-  hitBox.y = 0;
+  // Projectile spawned at top center of ship
+  hitBox.x = origin.x + (origin.w / 2);
+  hitBox.y = origin.h;
   hitBox.w = 37;
   hitBox.h = 32;
 }
