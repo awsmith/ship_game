@@ -33,7 +33,7 @@ int main()
 	// Class instances
 	Ship myShip;
 	Timer fps;
-
+	SDL_Rect hitbox;
 	// While the user has not quit
 	while(quit == false)
 	{
@@ -44,7 +44,7 @@ int main()
 		{
 			// Handle input from user. Only accepts up, down, left and right keys currently.
 			myShip.handle_input(event);
-
+			hitbox = myShip.get_coords();
 			// If the user X's out the window
 			if(event.type == SDL_QUIT)
 			{
