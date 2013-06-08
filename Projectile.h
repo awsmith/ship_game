@@ -1,9 +1,10 @@
-#ifndef Projectile_H_INCLUDED
-#define Projectile_H_INCLUDED
-
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include <string>
+
+#ifndef PROJECTILE_H_INCLUDED
+#define PROJECTILE_H_INCLUDED
+
 
 class Projectile
 {
@@ -29,15 +30,16 @@ class Projectile
     //Return Projectile surface
     SDL_Surface *get_image();
 
-    SDL_Surface *image();
+    SDL_Surface *image;
 
   private:
     int damage;
     int v_x;
     int v_y;
     int frame;
+    int status;
     SDL_Rect offset[2];
-    SDL_Rect hitbox;
+    SDL_Rect hitBox;
     std::string filename;
 };
 
