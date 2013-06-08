@@ -4,10 +4,9 @@
 
 int main()
 {
+  SDL_Surface *screen = NULL;
+  screen = init(640, 480, 32, screen);
   Ship tempShip;
-  //SDL_Rect tempCoords = tempShip.get_coords();
-  //std::cout << "tempShip coords:\nX: " << tempCoords.x;
-  //std::vector<Ship> ships;
-
+  std::cout << "tempShip coords:\nX: " << tempShip.get_coords().x << "\nY: " << tempShip.get_coords().y << '\n';
   return 0;
 }

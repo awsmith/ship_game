@@ -1,6 +1,6 @@
 //Utility functions used in ship game
 #include <iostream>
-
+#include "Ship.h"
 #include "utils.h"
 
 //Functions
