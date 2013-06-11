@@ -48,6 +48,8 @@ void Ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
+			// TODO: Create projectile when Spacebar is pressed
+			case SDLK_SPACE: ; break;
 			case SDLK_UP: v_y -= hitBox.h / 4; break;
 			case SDLK_DOWN: v_y += hitBox.h / 4; break;
 			case SDLK_LEFT: v_x -= hitBox.w / 4; break;
