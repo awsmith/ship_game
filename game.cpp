@@ -31,20 +31,17 @@ int main()
 	}
 
 	// Class instances
-	Ship myShip;
-	Timer fps;
-	SDL_Rect hitbox;
+	Ship *myShip = new Ship;
+	Timer *fps = new Timer;
 	// While the user has not quit
 	while(quit == false)
 	{
 		// Start the fps timer
-		fps.start();
-
+		fps->start();
 		while(SDL_PollEvent(&event))
 		{
 			// Handle input from user. Only accepts up, down, left and right keys currently.
-			myShip.handle_input(event);
-			hitbox = myShip.get_coords();
+			myShip->handle_input(event);
 			// If the user X's out the window
 			if(event.type == SDL_QUIT)
 			{
@@ -57,8 +54,8 @@ int main()
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0xFF, 0xFF ) );
 
 		// Adjust the x and y coordinates of the ship and apply to screen
-		myShip.move();
-		myShip.show(screen);
+		myShip->move();
+		myShip->show(screen);
 
 		// TODO: Apply player and generated prjoectiles
 
@@ -71,11 +68,13 @@ int main()
 		}
 
 		// Cap the frame rate if game is running too fast
-		if(fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
+		if(fps->get_ticks() < 1000 / FRAMES_PER_SECOND)
 		{
-			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
+			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps->get_ticks());
 		}
 	}
+	delete myShip;
+	delete fps;
 	SDL_Quit;
 	return 0;
 }
