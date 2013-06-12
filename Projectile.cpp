@@ -20,7 +20,7 @@ Projectile::Projectile(SDL_Rect origin)
 
 	// Projectile velocities
 	v_x = 0;
-	v_y = 0;
+	v_y = 6;
 	
 	// Set image filename and load in
 	filename = "ship.png";
@@ -28,8 +28,8 @@ Projectile::Projectile(SDL_Rect origin)
 	frame = 1;
 
 	// Projectile spawned at top center of ship
-	hitBox.x = origin.x + (origin.w / 2);
-	hitBox.y = origin.h;
+	hitBox.x = origin.x;
+	hitBox.y = origin.y - origin.h; 
 	hitBox.w = 37;
 	hitBox.h = 32;
 }
