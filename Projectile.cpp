@@ -5,6 +5,7 @@
 // Default constructor
 Projectile::Projectile(SDL_Rect origin)
 {
+	destroy = false;
 	// Clip first image for projectile animation
 	offset[0].x = 0;
 	offset[0].y = 0;
@@ -20,7 +21,7 @@ Projectile::Projectile(SDL_Rect origin)
 
 	// Projectile velocities
 	v_x = 0;
-	v_y = 6;
+	v_y = -6;
 	
 	// Set image filename and load in
 	filename = "ship.png";
@@ -84,13 +85,13 @@ void Projectile::move()
 	// Check if projectile goes out of x bounds
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
 	{
-		hitBox.x -= v_x;
+		destroy = true;
 	}
 
 	// Check if projectile goes out of y bounds
 	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480))
 	{
-		hitBox.y -= v_y;
+		destroy = true;
 	}
 }
 
@@ -98,4 +99,9 @@ void Projectile::move()
 SDL_Surface* Projectile::get_image()
 {
   return image;
+}
+
+bool Projectile::get_destroy()
+{
+	return destroy;
 }
