@@ -44,45 +44,23 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
-void handle_collisions(std::vector<Ship> ships)
+int handle_collisions(std::vector<Ship*> ships)
 {
-	// Number of ships to check for collisions
-	int numShips = ships.size();
-	// Number of collisions to check against for current ship
-	int numProjs = 0;
-	// Number of hits the current ship has taken
-	int hits;
-	// Coordinates to check collision of current objects
-	SDL_Rect shipHitBox, projHitBox;
+	SDL_Rect a, b;
+	int collisions = 0;
+	std::vector<Ship*>::iterator itr = ships.begin();
 
-	for(int x = 0; x < numShips; x++)
+	for(itr = ships.begin(); itr < ships.end(); itr++)
 	{
-		// Store coordinates for current ship
-
-		// Set numProjs to size of projectile vector for ships[x]
-		for(int y = 0; y < numProjs; y++)
-		{
-			// TODO: Create projectile class, set to current projectile coords
-
-			// Check collision of ships[x] and projecticles
-			if(check_collision(shipHitBox, projHitBox))
-			{
-				// Increment hits for each collision detected
-				hits++;
-			}
+		a = (*itr)->get_coords();
+		std::vector<Ship*>::iterator itrCheck = itr++;
+		b = (*itrCheck)->get_coords();
+		if(check_collision(a, b) == true)
+		{	
+			collisions++;
 		}
-
-		// If ship was hit
-		if(hits > 0)
-		{
-			// Deal damage to ship based on number of hits
-			// TODO: Create take damage function for ship class
-			hits = 0;
-		}
-
-		// Check health status of current ship
 	}
-
+	return collisions;
 }
 
 SDL_Surface *load_image(std::string filename)
