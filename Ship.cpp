@@ -32,7 +32,7 @@ Ship::Ship()
 	hitBox.y = 0;
 	hitBox.w = 37;
 	hitBox.h = 32;
-	// Added vector of pointers to projectile	
+	// Added vector of pointers to projectile
 	std::vector<Projectile*> projectiles;
 }
 
@@ -90,7 +90,7 @@ void Ship::move()
 	}
 	// Move projectiles
 	std::vector<Projectile*>::iterator itr;
-	for(itr = projectiles.begin(); itr < projectiles.end(); itr++)
+	for(itr = projectiles.begin(); itr != projectiles.end(); ++itr)
 	{
 		(*itr)->move();
 	}
@@ -105,9 +105,9 @@ void Ship::show(SDL_Surface *destination)
 	{
 		frame = 0;
 	}
-	// Show projectiles	
+	// Show projectiles
 	std::vector<Projectile*>::iterator itr;
-	for(itr = projectiles.begin(); itr < projectiles.end(); itr++)
+	for(itr = projectiles.begin(); itr != projectiles.end(); ++itr)
 	{
 		(*itr)->show(destination);
 	}
