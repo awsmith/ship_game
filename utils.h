@@ -18,7 +18,7 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 
 SDL_Surface *load_image(std::string filename);
 
-void handle_collisions(std::vector<Ship> ships);
+int handle_collisions(std::vector<Ship*> ships);
 
 bool check_collision(SDL_Rect A, SDL_Rect B);
 
