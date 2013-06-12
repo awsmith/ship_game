@@ -32,6 +32,8 @@ Ship::Ship()
 	hitBox.y = 0;
 	hitBox.w = 37;
 	hitBox.h = 32;
+	// Added vector of pointers to projectile	
+	std::vector<Projectile*> projectiles;
 }
 
 // Destructor
@@ -49,7 +51,7 @@ void Ship::handle_input(SDL_Event &event)
 		switch(event.key.keysym.sym)
 		{
 			// TODO: Create projectile when Spacebar is pressed
-			case SDLK_SPACE: ; break;
+			case SDLK_SPACE: projectiles.push_back(new Projectile(hitBox)); break;
 			case SDLK_UP: v_y -= hitBox.h / 4; break;
 			case SDLK_DOWN: v_y += hitBox.h / 4; break;
 			case SDLK_LEFT: v_x -= hitBox.w / 4; break;
@@ -86,6 +88,12 @@ void Ship::move()
 	{
 		hitBox.y -= v_y;
 	}
+	// Move projectiles
+	std::vector<Projectile*>::iterator itr;
+	for(itr = projectiles.begin(); itr < projectiles.end(); itr++)
+	{
+		(*itr)->move();
+	}
 }
 
 // Apply Ship to a surface
@@ -96,6 +104,12 @@ void Ship::show(SDL_Surface *destination)
 	if(frame >= 2)
 	{
 		frame = 0;
+	}
+	// Show projectiles	
+	std::vector<Projectile*>::iterator itr;
+	for(itr = projectiles.begin(); itr < projectiles.end(); itr++)
+	{
+		(*itr)->show(destination);
 	}
 }
 
