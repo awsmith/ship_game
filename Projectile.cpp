@@ -7,15 +7,15 @@ Projectile::Projectile(SDL_Rect origin)
 {
 	destroy = false;
 	// Clip first image for projectile animation
-	offset[0].x = 0;
-	offset[0].y = 0;
-	offset[0].w = 37;
-	offset[0].h = 32;
+	offset[0].x = 50;
+	offset[0].y = 78;
+	offset[0].w = 8;
+	offset[0].h = 13;
 	// Clip second image for projectile animation
-	offset[1].x = 40;
-	offset[1].y = 0;
-	offset[1].w = 37;
-	offset[1].h = 32;
+	offset[1].x = 50;
+	offset[1].y = 78;
+	offset[1].w = 8;
+	offset[1].h = 13;
 
 	status = 0;
 
@@ -29,10 +29,10 @@ Projectile::Projectile(SDL_Rect origin)
 	frame = 1;
 
 	// Projectile spawned at top center of ship
-	hitBox.x = origin.x;
-	hitBox.y = origin.y - origin.h; 
-	hitBox.w = 37;
-	hitBox.h = 32;
+	hitBox.x = origin.x + 4;
+	hitBox.y = origin.y; 
+	hitBox.w = 8;
+	hitBox.h = 13;
 }
 
 // Destructor
