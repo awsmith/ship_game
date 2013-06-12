@@ -1,8 +1,9 @@
 // Header file for ship class
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "Projectile.h"
 #include <string>
-
+#include <vector>
 #ifndef SHIP_H
 #define SHIP_H
 
@@ -38,6 +39,8 @@ class Ship
 
 		// Surface image for ship
 		SDL_Surface* image;
+		
+		std::vector<Projectile*> projectiles;
 
 	private:
 		// Coordinates
