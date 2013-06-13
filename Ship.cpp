@@ -90,17 +90,16 @@ void Ship::move()
 	}
 	// Move projectiles
 	std::vector<Projectile*>::iterator itr;
-	for(itr = projectiles.begin(); itr != projectiles.end(); ++itr)
+	for(itr = projectiles.begin(); itr != projectiles.end(); itr++)
 	{
 		(*itr)->move();
 
 		// Check if projectile is still alive
 		if((*itr)->get_destroy() == true)
 		{
+			//delete *itr;
 			// Clean up vector
 			itr = projectiles.erase(itr);
-			// Verify in terminal vector is being cleaned up
-			std::cout << "Poof..." << std::endl;
 		}
 	}
 }
