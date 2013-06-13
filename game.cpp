@@ -32,7 +32,16 @@ int main()
 
 	// Class instances
 	Ship *myShip = new Ship;
+	Ship *testShip = new Ship;
 	Timer *fps = new Timer;
+
+	// Vector to hold all ships
+	std::vector<Ship*> ships;
+
+	// Add player and enemy ship to vector
+	ships.push_back(myShip);
+	ships.push_back(testShip);	
+
 	// While the user has not quit
 	while(quit == false)
 	{
