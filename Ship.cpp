@@ -90,7 +90,7 @@ void Ship::move()
 	}
 	// Move projectiles
 	std::vector<Projectile*>::iterator itr;
-	for(itr = projectiles.begin(); itr != projectiles.end(); itr++)
+	for(itr = projectiles.begin(); itr != projectiles.end();)
 	{
 		(*itr)->move();
 
@@ -100,6 +100,11 @@ void Ship::move()
 			//delete *itr;
 			// Clean up vector
 			itr = projectiles.erase(itr);
+		}
+		
+		else
+		{
+			itr++;
 		}
 	}
 }
