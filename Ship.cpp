@@ -97,9 +97,10 @@ void Ship::move()
 		// Check if projectile is still alive
 		if((*itr)->get_destroy() == true)
 		{
-			//delete *itr;
 			// Clean up vector
+			delete *itr;
 			itr = projectiles.erase(itr);
+			// Verify in terminal vector is being cleaned up
 		}
 		
 		else
