@@ -8,7 +8,7 @@
 //#include "SDL/SDL_image.h"
 
 // Constructor
-Ship::Ship()
+Ship::Ship(int x , int y)
 {
 
         offset[0].x = 0;
@@ -28,8 +28,8 @@ Ship::Ship()
 	image = load_image(filename);
 	frame = 1;
 	hp = 1;
-	hitBox.x = 0;
-	hitBox.y = 0;
+	hitBox.x = x;
+	hitBox.y = y;
 	hitBox.w = 37;
 	hitBox.h = 32;
 	// Added vector of pointers to projectile
