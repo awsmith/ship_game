@@ -53,8 +53,8 @@ int handle_collisions(std::vector<Ship*> ships)
 	for(itr = ships.begin(); itr < ships.end(); itr++)
 	{
 		a = (*itr)->get_coords();
-		std::vector<Ship*>::iterator itrCheck = itr++;
-		b = (*itrCheck)->get_coords();
+		itr++;	
+		b = (*itr++)->get_coords();
 		if(check_collision(a, b) == true)
 		{	
 			collisions++;
