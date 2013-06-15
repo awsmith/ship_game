@@ -21,7 +21,7 @@ class Ship
 		void handle_input(SDL_Event &event);
 
 		// Move ship and hitbox
-		void move(std::vector<Ship*> ships);
+		void move(std::list<Ship*> ships);
 
 		// Apply ship to a surface
 		void show(SDL_Surface *destination);
@@ -37,6 +37,9 @@ class Ship
 
 		// Return ship surface
 		SDL_Surface *get_image();
+
+                // Return projectiles that were created by ship
+                std::list<Projectile*> get_projectiles();
 
 		// Surface image for ship
 		SDL_Surface* image;

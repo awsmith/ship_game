@@ -35,12 +35,12 @@ int main()
 	Ship *testShip = new Ship(100, 200);;
 	Timer *fps = new Timer;
 
-	// Vector to hold all ships
-	std::vector<Ship*> ships;
+	// List to hold all ships
+	std::list<Ship*> ships;
 
-	// Add player and enemy ship to vector
+	// Add player and enemy ship to list
 	ships.push_back(myShip);
-	ships.push_back(testShip);	
+	ships.push_back(testShip);
 
 	// While the user has not quit
 	while(quit == false)

@@ -44,19 +44,19 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
-int handle_collisions(std::vector<Ship*> ships)
+int handle_collisions(std::list<Ship*> ships)
 {
 	SDL_Rect a, b;
 	int collisions = 0;
-	std::vector<Ship*>::iterator itr = ships.begin();
+	std::list<Ship*>::iterator itr = ships.begin();
 
 	for(itr = ships.begin(); itr < ships.end(); itr++)
 	{
 		a = (*itr)->get_coords();
-		itr++;	
+		itr++;
 		b = (*itr++)->get_coords();
 		if(check_collision(a, b) == true)
-		{	
+		{
 			collisions++;
 		}
 	}

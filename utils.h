@@ -9,7 +9,7 @@
 #include "SDL/SDL_mixer.h"
 #include "Ship.h"
 #include <string>
-#include <vector>
+#include <list>
 
 // May need to be moved to main, will need three ints and surface for function
 SDL_Surface* init(int width, int height, int bpp, SDL_Surface *screen);
@@ -18,7 +18,7 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 
 SDL_Surface *load_image(std::string filename);
 
-int handle_collisions(std::vector<Ship*> ships);
+int handle_collisions(std::list<Ship*> ships);
 
 bool check_collision(SDL_Rect A, SDL_Rect B);
 
