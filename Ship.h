@@ -21,7 +21,7 @@ class Ship
 		void handle_input(SDL_Event &event);
 
 		// Move ship and hitbox
-		void move();
+		void move(std::vector<Ship*> ships);
 
 		// Apply ship to a surface
 		void show(SDL_Surface *destination);
