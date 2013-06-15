@@ -71,20 +71,20 @@ void Ship::handle_input(SDL_Event &event)
 
 // Move Ship and hitbox
 // TODO:check collisions(?)
-void Ship::move()
+void Ship::move(std::vector<Ship*> ships)
 {
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
-
+	int collisions = handle_collisions(ships);
 	// Keep ship within screen width
-	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
+	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
 	{
 		hitBox.x -= v_x;
 	}
 
 	// Keep ship within screen height
-	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480))
+	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0)
 	{
 		hitBox.y -= v_y;
 	}
