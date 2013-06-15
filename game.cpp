@@ -31,8 +31,8 @@ int main()
 	}
 
 	// Class instances
-	Ship *myShip = new Ship;
-	Ship *testShip = new Ship;
+	Ship *myShip = new Ship(100, 100);
+	Ship *testShip = new Ship(100, 200);;
 	Timer *fps = new Timer;
 
 	// Vector to hold all ships
@@ -63,8 +63,8 @@ int main()
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0xFF, 0xFF ) );
 
 		// Adjust the x and y coordinates of the ship and apply to screen
-		myShip->move();
-		testShip->move();
+		myShip->move(ships);
+		testShip->move(ships);
 		myShip->show(screen);
 		testShip->show(screen);
 
