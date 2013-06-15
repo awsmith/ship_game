@@ -33,7 +33,6 @@ Ship::Ship(int x , int y)
 	hitBox.w = 37;
 	hitBox.h = 32;
 	// Added vector of pointers to projectile
-	std::vector<Projectile*> projectiles;
 }
 
 // Destructor
@@ -89,7 +88,7 @@ void Ship::move()
 		hitBox.y -= v_y;
 	}
 	// Move projectiles
-	std::vector<Projectile*>::iterator itr;
+	std::list<Projectile*>::iterator itr;
 	for(itr = projectiles.begin(); itr != projectiles.end();)
 	{
 		(*itr)->move();
@@ -102,7 +101,7 @@ void Ship::move()
 			itr = projectiles.erase(itr);
 			// Verify in terminal vector is being cleaned up
 		}
-		
+
 		else
 		{
 			itr++;
@@ -120,7 +119,7 @@ void Ship::show(SDL_Surface *destination)
 		frame = 0;
 	}
 	// Show projectiles
-	std::vector<Projectile*>::iterator itr;
+	std::list<Projectile*>::iterator itr;
 	for(itr = projectiles.begin(); itr != projectiles.end(); ++itr)
 	{
 		(*itr)->show(destination);
