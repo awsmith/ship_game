@@ -3,7 +3,7 @@
 #include "SDL/SDL_image.h"
 #include "Projectile.h"
 #include <string>
-#include <vector>
+#include <list>
 #ifndef SHIP_H
 #define SHIP_H
 
@@ -39,8 +39,8 @@ class Ship
 
 		// Surface image for ship
 		SDL_Surface* image;
-		
-		std::vector<Projectile*> projectiles;
+
+                std::list<Projectile*> get_projectiles();
 
 	private:
 		// Coordinates
@@ -64,6 +64,9 @@ class Ship
 
 		// Health points of ship
 		int hp;
+
+                // List of projectiles produced by ship
+                std::list<Projectile*> projectiles;
 
 };
 
