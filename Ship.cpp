@@ -142,3 +142,9 @@ const int Ship::get_hp()
 {
 	return hp;
 }
+
+//Return the ship's list of projectiles
+std::list<Projectile*> Ship::get_projectiles()
+{
+  return projectiles;
+}
