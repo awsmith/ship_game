@@ -64,7 +64,9 @@ int main()
 
 		// Adjust the x and y coordinates of the ship and apply to screen
 		myShip->move();
+		testShip->move();
 		myShip->show(screen);
+		testShip->show(screen);
 
 		// TODO: Apply player and generated prjoectiles
 
@@ -83,6 +85,7 @@ int main()
 		}
 	}
 	delete myShip;
+	delete testShip;
 	delete fps;
 	SDL_Quit;
 	return 0;
