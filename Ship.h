@@ -2,6 +2,7 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "Projectile.h"
+#include "utils.h"
 #include <string>
 #include <list>
 #ifndef SHIP_H
@@ -39,8 +40,6 @@ class Ship
 
 		// Surface image for ship
 		SDL_Surface* image;
-
-                std::list<Projectile*> get_projectiles();
 
 	private:
 		// Coordinates
