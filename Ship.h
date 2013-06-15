@@ -11,7 +11,7 @@ class Ship
 {
   public:
   		// Constructor
-		Ship();
+		Ship(int x = 0, int y = 0);
 
 		// Destructor
 		~Ship();
