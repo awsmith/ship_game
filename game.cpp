@@ -67,14 +67,8 @@ int main()
 		for(itr; itr != ships.end(); itr++)
 		{
 			(*itr)->move(ships);
-		}
-
-		for(itr = ships.begin(); itr != ships.end(); itr++)
-		{
 			(*itr)->show(screen);
 		}
-
-		// TODO: Apply player and generated prjoectiles
 
 		// TODO: Apply enemy and generated projectiles
 
