@@ -74,7 +74,7 @@ void Ship::move(std::vector<Ship*> ships)
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
-	int collisions = handle_collisions(ships);
+	int collisions = handle_collisions(get_coords(), ships);
 	// Keep ship within screen width
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
 	{
