@@ -30,7 +30,7 @@ Projectile::Projectile(SDL_Rect origin)
 
 	// Projectile spawned at top center of ship
 	hitBox.x = origin.x + 4;
-	hitBox.y = origin.y; 
+	hitBox.y = origin.y - 10; 
 	hitBox.w = 8;
 	hitBox.h = 13;
 }
