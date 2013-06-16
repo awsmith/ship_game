@@ -63,10 +63,16 @@ int main()
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0xFF, 0xFF ) );
 
 		// Adjust the x and y coordinates of the ship and apply to screen
-		myShip->move(ships);
-		testShip->move(ships);
-		myShip->show(screen);
-		testShip->show(screen);
+		std::vector<Ship*>::iterator itr = ships.begin();
+		for(itr; itr != ships.end(); itr++)
+		{
+			(*itr)->move(ships);
+		}
+
+		for(itr = ships.begin(); itr != ships.end(); itr++)
+		{
+			(*itr)->show(screen);
+		}
 
 		// TODO: Apply player and generated prjoectiles
 
