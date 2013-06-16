@@ -36,7 +36,7 @@ int main()
 	Timer *fps = new Timer;
 
 	// List to hold all ships
-	std::list<Ship*> ships;
+	std::vector<Ship*> ships;
 
 	// Add player and enemy ship to list
 	ships.push_back(myShip);

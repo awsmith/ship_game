@@ -5,6 +5,7 @@
 #include "utils.h"
 #include <string>
 #include <list>
+#include <vector>
 #ifndef SHIP_H
 #define SHIP_H
 
@@ -21,7 +22,7 @@ class Ship
 		void handle_input(SDL_Event &event);
 
 		// Move ship and hitbox
-		void move(std::list<Ship*> ships);
+		void move(std::vector<Ship*> ships);
 
 		// Apply ship to a surface
 		void show(SDL_Surface *destination);
