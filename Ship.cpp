@@ -98,6 +98,7 @@ void Ship::move(std::vector<Ship*> ships)
 		// Check if projectile is still alive
 		if(((*itr)->get_destroy() == true) || handle_collisions((*itr)->get_coords(), ships))
 		{
+			//TODO: Deal damage to ships hit
 			// Clean up list and memory as needed
 			delete *itr;
 			itr = projectiles.erase(itr);
