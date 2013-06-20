@@ -68,13 +68,18 @@ void Ship::handle_input(SDL_Event &event)
 }
 
 // Move Ship and hitbox
-// TODO:check collisions(?)
 void Ship::move(std::vector<Ship*> ships)
 {
 	// Iterator to access objects in ships
 	std::vector<Ship*>::iterator shipItr;
+	// Tempory list to store projectiles 
+	std::list<Projectile*> tempProjectiles;
 	// Hold the hitboxes for ships and projects
 	std::vector<SDL_Rect> hitboxes;
+	// Iterator to access objects in projectiles	
+	std::list<Projectile*>::iterator itr;
+	// Store the number of collisions
+	int collisions = 0;
 
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
@@ -86,7 +91,9 @@ void Ship::move(std::vector<Ship*> ships)
 		hitboxes.push_back((*shipItr)->get_coords());	
 	}
 
-	int collisions = handle_collisions(get_coords(), ships);
+	// Check for ship to ship collision
+	collisions = handle_collisions(get_coords(), ships);
+
 	// Keep ship within screen width
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
 	{
@@ -99,9 +106,20 @@ void Ship::move(std::vector<Ship*> ships)
 		hitBox.y -= v_y;
 	}
 
-	// Move projectiles
-	std::list<Projectile*>::iterator itr;
+	// Clear the contents of the hitboxes vector for projectile hitboxes
+	hitboxes.clear();
 
+	// Populate the hitboxes vector with projectile hitboxes	
+	for(shipItr = ships.begin(); shipItr != ships.end(); shipItr++)
+	{
+		tempProjectiles = (*shipItr)->get_projectiles();
+		for(itr = tempProjectiles.begin(); itr != tempProjectiles.end(); itr++)
+		{
+			hitboxes.push_back((*itr)->get_hitbox());
+		}	
+	}
+
+	// Move projectiles
 	for(itr = projectiles.begin(); itr != projectiles.end();)
 	{
 		// Move current Projectile
