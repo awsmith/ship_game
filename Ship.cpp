@@ -187,3 +187,9 @@ std::list<Projectile*> Ship::get_projectiles()
 {
   return projectiles;
 }
+
+// Reduce hp of ship
+void Ship::take_damage()
+{
+	hp--;
+}
