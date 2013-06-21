@@ -45,6 +45,9 @@ class Ship
 		// Surface image for ship
 		SDL_Surface* image;
 
+		// Reduces hp of ship		
+		void take_damage();
+
 	private:
 		// Coordinates
 		SDL_Rect offset[2];
