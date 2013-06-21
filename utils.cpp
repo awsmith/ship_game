@@ -60,6 +60,7 @@ int handle_collisions(SDL_Rect A, std::vector<Ship*> ships)
 		if(check_collision(a, b) == true)
 		{
 			collisions++;
+			(*itr)->take_damage();
 		}
 	}
 	return collisions;
