@@ -41,7 +41,13 @@ int main()
 	// Add player and enemy ship to list
 	ships.push_back(myShip);
 	ships.push_back(testShip);
-
+	// Add a bunch of ships for testing
+	ships.push_back(new Ship(100, 200));
+	ships.push_back(new Ship(100, 300));
+	ships.push_back(new Ship(200, 200));
+	ships.push_back(new Ship(400, 200));
+	ships.push_back(new Ship(140, 350));
+	ships.push_back(new Ship(390, 0));
 	// While the user has not quit
 	while(quit == false)
 	{
@@ -64,13 +70,25 @@ int main()
 
 		// Adjust the x and y coordinates of the ship and apply to screen
 		std::vector<Ship*>::iterator itr = ships.begin();
-		for(itr; itr != ships.end(); itr++)
+		for(itr; itr != ships.end();)
 		{
 			(*itr)->move(ships);
 			(*itr)->show(screen);
+			
+			// Check the health of the ship
+			if((*itr)->get_hp() == 0)
+			{
+				// Clean up the ship vector if the ship's hp == 0
+				delete *itr;
+				itr = ships.erase(itr);
+			}
+			
+			// Increment itr if the previous ship was not destroyed
+			else
+			{
+				itr++;
+			}
 		}
-
-		// TODO: Apply enemy and generated projectiles
 
 		// Refresh screen
 		if(SDL_Flip(screen) == -1)
