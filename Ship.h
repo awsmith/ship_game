@@ -45,8 +45,13 @@ class Ship
 		// Surface image for ship
 		SDL_Surface* image;
 
-		// Reduces hp of ship		
-		void take_damage();
+		// Reduces hp of ship
+		void take_damage(int damageDealt);
+
+                //TODO: comment
+		const int get_xVel();
+
+		const int get_yVel();
 
 	private:
 		// Coordinates
