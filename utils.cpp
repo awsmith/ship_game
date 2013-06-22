@@ -44,24 +44,42 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
-int handle_collisions(SDL_Rect A, std::vector<Ship*> ships)
+int handle_collisions(Ship* playerShip, std::vector<Ship*> enemyShips)
 {
-	SDL_Rect a = A, b;
-	int collisions = 0;
-	std::vector<Ship*>::iterator itr = ships.begin();
+	SDL_Rect playerCoords = (*playerShip).get_coords();
+        playerCoords.x += (*playerShip).get_xVel();
+        playerCoords.y += (*playerShip).get_yVel();
 
-	for(itr = ships.begin(); itr < ships.end(); itr++)
+        SDL_Rect enemyCoords;
+        SDL_Rect projectileCoords;
+	int collisions = 0;
+	std::vector<Ship*>::iterator shipItr = enemyShips.begin();
+        std::list<Projectile*> currentEnemyProjectiles;
+        std::list<Projectile*>::iterator projectileItr;
+
+	for(shipItr = enemyShips.begin(); shipItr < enemyShips.end(); shipItr++)
 	{
-		b = (*itr)->get_coords();
-		if((a.x == b.x) && (a.y == b.y))
+		enemyCoords = (*shipItr)->get_coords();
+		if(check_collision(playerCoords, enemyCoords) == true)
 		{
-			continue;
+                  //TODO: change amount of damage taken by impact with a ship
+                  collisions++;
+                  (*playerShip).take_damage(0);
 		}
-		if(check_collision(a, b) == true)
-		{
-			collisions++;
-			(*itr)->take_damage();
-		}
+
+                //Set iterator to current enemy ship projectile list
+                currentEnemyProjectiles = (*shipItr)->get_projectiles();
+                projectileItr = currentEnemyProjectiles.begin();
+               while(projectileItr != currentEnemyProjectiles.end())
+                {
+                  projectileCoords = (*projectileItr)->get_coords();
+                  if(check_collision(playerCoords, projectileCoords) == true)
+                  {
+                    collisions++;
+                    (*playerShip).take_damage((*projectileItr)->get_damage());
+                  }
+                  projectileItr++;
+                }
 	}
 	return collisions;
 }
