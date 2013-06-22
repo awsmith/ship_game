@@ -2,7 +2,7 @@
 #include "Ship.h"
 
 // Constructor
-Ship::Ship(int x , int y)
+Ship::Ship(int x , int y, int z)
 {
 	// First frame of ship animation
         offset[0].x = 0;
@@ -19,14 +19,15 @@ Ship::Ship(int x , int y)
 	hitBox.y = y;
 	hitBox.w = 37;
 	hitBox.h = 32;
-
+	count = 0;
 	status = 0;
 	v_x = 0;
-	v_y = 0;
+	v_y = -z;
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
-	hp = 1;
+	hp = 3;
+	type = z;
 }
 
 // Destructor
@@ -84,7 +85,16 @@ void Ship::move(std::vector<Ship*> ships)
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
-
+	if((type != 0) && count == 0)
+	{
+		projectiles.push_back(new Projectile(hitBox));
+	}
+	
+	count++;
+	if(count == 20)
+	{
+		count = 0;
+	}
 	// Populate hitboxes vector with ship hitboxes
 	for(shipItr = ships.begin(); shipItr != ships.end(); shipItr++)
 	{
@@ -98,12 +108,20 @@ void Ship::move(std::vector<Ship*> ships)
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
 	{
 		hitBox.x -= v_x;
+		if(type != 0)
+		{
+			v_x = -(v_x);
+		}
 	}
 
 	// Keep ship within screen height
 	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0)
 	{
 		hitBox.y -= v_y;
+		if(type != 0)
+		{
+			hp = 0;
+		}
 	}
 
 	// Clear the contents of the hitboxes vector for projectile hitboxes
