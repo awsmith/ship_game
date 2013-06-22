@@ -13,7 +13,10 @@ class Ship
 {
   public:
   		// Constructor
+		// x and y == starting coordinates
+		// z == ship type(NPC or PC)
 		Ship(int x = 0, int y = 0, int z = 2);
+
 		// Destructor
 		~Ship();
 
@@ -55,8 +58,12 @@ class Ship
 		SDL_Rect hitBox;
 
 		// Orientation of ship
+		// TODO: Currently unused. 
 		int status;
+
+		// Delay for NPC ships firing 
 		int count;
+
 		// Velocity
 		int v_x;
 		int v_y;
@@ -73,6 +80,7 @@ class Ship
                 // List of projectiles produced by ship
                 std::list<Projectile*> projectiles;
 
+		// Ships type, PC or NPC. PC == 0
 		int type;
 };
 
