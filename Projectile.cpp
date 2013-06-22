@@ -3,34 +3,72 @@
 #include <iostream>
 
 // Default constructor
-Projectile::Projectile(SDL_Rect origin)
+Projectile::Projectile(SDL_Rect origin, int orientation)
 {
+	// Status for projectile
+	// 0 == going up
+	// 0 != going down
+	status = orientation;
+	// If the projectile should be destroyed 
 	destroy = false;
 	// Clip first image for projectile animation
 	offset[0].x = 50;
-	offset[0].y = 78;
+	// Clip coordinate for PC
+	if(status == 0)
+	{
+		offset[0].y = 78;
+	}
+	// Clip coordinate for NPC
+	else
+	{
+		offset[0].y = 98;
+	}
 	offset[0].w = 8;
 	offset[0].h = 13;
 	// Clip second image for projectile animation
 	offset[1].x = 50;
-	offset[1].y = 78;
+	// Clip coordinate for PC 
+	if(status == 0)
+	{
+		offset[1].y = 78;
+	}
+	// Clip coordinate for NPC 
+	else
+	{
+		offset[1].y = 98;
+	}
 	offset[1].w = 8;
 	offset[1].h = 13;
 
-	status = 0;
 
 	// Projectile velocities
 	v_x = 0;
 	v_y = -6;
-	
+	// If NPC projectile 
+	if(status != 0)
+	{
+		// Reverse the velocity
+		v_y = -v_y;
+	}	
 	// Set image filename and load in
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
 
-	// Projectile spawned at top center of ship
+	// Projectile spawned at center of ship
 	hitBox.x = origin.x + 4;
-	hitBox.y = origin.y - 10; 
+	// If PC projectile
+	if(status == 0)
+	{
+		// Spawn at the top of the image  
+		hitBox.y = origin.y - 10; 
+	}
+	// If NPC projectile
+	else
+	{
+		// Spawn at the bottom of the image
+		hitBox.y = origin.y + origin.h;
+	}
 	hitBox.w = 8;
 	hitBox.h = 13;
 }
