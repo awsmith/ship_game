@@ -31,8 +31,7 @@ int main()
 	}
 
 	// Class instances
-	Ship *myShip = new Ship(100, 100);
-	Ship *testShip = new Ship(100, 200);;
+	Ship *myShip = new Ship(100, 100, 0);
 	Timer *fps = new Timer;
 
 	// List to hold all ships
@@ -40,7 +39,7 @@ int main()
 
 	// Add player and enemy ship to list
 	ships.push_back(myShip);
-	ships.push_back(testShip);
+
 	// Add a bunch of ships for testing
 	ships.push_back(new Ship(100, 200));
 	ships.push_back(new Ship(100, 300));
@@ -48,11 +47,20 @@ int main()
 	ships.push_back(new Ship(400, 200));
 	ships.push_back(new Ship(140, 350));
 	ships.push_back(new Ship(390, 0));
+
 	// While the user has not quit
 	while(quit == false)
 	{
+		// If there are no NPC ships remaining on screen
+		if(ships.size() == 1)
+		{
+			ships.push_back(new Ship(rand() % 600, 430 ));
+			ships.push_back(new Ship(rand() % 600, 430 ));
+		}
+
 		// Start the fps timer
 		fps->start();
+		/// While there are events to handle
 		while(SDL_PollEvent(&event))
 		{
 			// Handle input from user. Only accepts up, down, left and right keys currently.
@@ -70,6 +78,7 @@ int main()
 
 		// Adjust the x and y coordinates of the ship and apply to screen
 		std::vector<Ship*>::iterator itr = ships.begin();
+
 		for(itr; itr != ships.end();)
 		{
 			(*itr)->move(ships);
@@ -81,6 +90,7 @@ int main()
 				// Clean up the ship vector if the ship's hp == 0
 				delete *itr;
 				itr = ships.erase(itr);
+				
 			}
 			
 			// Increment itr if the previous ship was not destroyed
@@ -89,7 +99,7 @@ int main()
 				itr++;
 			}
 		}
-
+		
 		// Refresh screen
 		if(SDL_Flip(screen) == -1)
 		{
@@ -101,9 +111,16 @@ int main()
 		{
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps->get_ticks());
 		}
+		// If the player is dead
+		if(myShip->get_hp() == 0)
+		{
+			std::cout << "You lose" << std::endl;
+			quit = true;
+		}
 	}
-	delete myShip;
-	delete testShip;
+	// Empty ships vector
+	ships.clear();
+	// Deallocate memory use for timer
 	delete fps;
 	SDL_Quit;
 	return 0;
