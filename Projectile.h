@@ -9,7 +9,7 @@
 class Projectile
 {
 	public:
-		Projectile(SDL_Rect origin);
+		Projectile(SDL_Rect origin, int orientation = 0);
 		~Projectile();
 
 		//Move projectile
