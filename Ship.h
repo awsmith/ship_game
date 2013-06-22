@@ -13,8 +13,7 @@ class Ship
 {
   public:
   		// Constructor
-		Ship(int x = 0, int y = 0);
-
+		Ship(int x = 0, int y = 0, int z = 2);
 		// Destructor
 		~Ship();
 
@@ -57,7 +56,7 @@ class Ship
 
 		// Orientation of ship
 		int status;
-
+		int count;
 		// Velocity
 		int v_x;
 		int v_y;
@@ -74,6 +73,7 @@ class Ship
                 // List of projectiles produced by ship
                 std::list<Projectile*> projectiles;
 
+		int type;
 };
 
 #endif
