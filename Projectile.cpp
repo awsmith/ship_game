@@ -22,7 +22,7 @@ Projectile::Projectile(SDL_Rect origin)
 	// Projectile velocities
 	v_x = 0;
 	v_y = -6;
-	
+
 	// Set image filename and load in
 	filename = "ship.png";
 	image = load_image(filename);
@@ -30,9 +30,12 @@ Projectile::Projectile(SDL_Rect origin)
 
 	// Projectile spawned at top center of ship
 	hitBox.x = origin.x + 4;
-	hitBox.y = origin.y - 10; 
+	hitBox.y = origin.y - 10;
 	hitBox.w = 8;
 	hitBox.h = 13;
+
+        //Damage dealt by projectile
+        damage = 0;
 }
 
 // Destructor
@@ -65,7 +68,7 @@ void Projectile::show(SDL_Surface *destination)
 
 	// Increment the frame counter for animation
 	frame++;
-	
+
 	// Check frame counter boundry
 	if(frame >= 2)
 	{
