@@ -91,6 +91,13 @@ int main()
 			}
 		}
 
+                if(handle_collisions(myShip, ships) == 0)
+                {
+                  (*myShip).move(ships);
+                }
+
+                (*myShip).show(screen);
+
 		// Refresh screen
 		if(SDL_Flip(screen) == -1)
 		{
