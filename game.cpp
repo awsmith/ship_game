@@ -54,8 +54,8 @@ int main()
 		// If there are no NPC ships remaining on screen
 		if(ships.size() == 1)
 		{
-			ships.push_back(new Ship(rand() % 600, 430 ));
-			ships.push_back(new Ship(rand() % 600, 430 ));
+			ships.push_back(new Ship(rand() % 600, -30 ));
+			ships.push_back(new Ship(rand() % 600, -30 ));
 		}
 
 		// Start the fps timer
