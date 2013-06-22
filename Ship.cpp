@@ -4,16 +4,34 @@
 // Constructor
 Ship::Ship(int x , int y, int z)
 {
-	// First frame of ship animation
-        offset[0].x = 0;
-	offset[0].y = 0;
-	offset[0].w = 37;
-	offset[0].h = 32;
-	// Second frame of ship animation
-        offset[1].x = 40;
-	offset[1].y = 0;
-	offset[1].w = 37;
-	offset[1].h = 32;
+	// Clip images for PC Ship
+	if(z == 0)
+	{
+		// First frame of ship animation
+		offset[0].x = 0;
+		offset[0].y = 0;
+		offset[0].w = 37;
+		offset[0].h = 32;
+		// Second frame of ship animation
+		offset[1].x = 40;
+		offset[1].y = 0;
+		offset[1].w = 37;
+		offset[1].h = 32;
+	}
+	// Clip images for NPC ship
+	else
+	{
+		// First frame of ship animation
+		offset[0].x = 71;
+		offset[0].y = 68;
+		offset[0].w = 37;
+		offset[0].h = 32;
+		// Second frame of ship animation
+		offset[1].x = 112;
+		offset[1].y = 68;
+		offset[1].w = 37;
+		offset[1].h = 32;
+	}
 	// Coordinates for ship
 	hitBox.x = x;
 	hitBox.y = y;
@@ -25,7 +43,7 @@ Ship::Ship(int x , int y, int z)
 	// X velocity
 	v_x = 0;
 	// Y velocity. NPC ships start in motion 
-	v_y = -z;
+	v_y = z;
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
@@ -94,7 +112,7 @@ void Ship::move(std::vector<Ship*> ships)
 	if((type != 0) && count == 0)
 	{
 		// Create new projectile and add to projectiles list 
-		projectiles.push_back(new Projectile(hitBox));
+		projectiles.push_back(new Projectile(hitBox, 1));
 	}
 	// Increment the delay counter	
 	count++;
@@ -126,14 +144,14 @@ void Ship::move(std::vector<Ship*> ships)
 		}
 	}
 	// If ship is an NPC and has left the screen
-	if((type != 0) && (hitBox.y == 0))
+	if((type != 0) && (hitBox.y == 480))
 	{
 		// Destroy the ship
 		hp = 0;
 	}
 
 	// Keep PC ship within screen height
-	else if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0)
+	else if(((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0) && type == 0)
 	{
 		// Undo Y coordinate update
 		hitBox.y -= v_y;
