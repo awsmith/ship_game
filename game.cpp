@@ -39,7 +39,8 @@ int main()
 	std::vector<Ship*> ships;
 
 	// Add player and enemy ship to list
-	ships.push_back(myShip);
+	//ships.push_back(myShip);
+
 	ships.push_back(testShip);
 	// Add a bunch of ships for testing
 	ships.push_back(new Ship(100, 200));
@@ -74,7 +75,7 @@ int main()
 		{
 			(*itr)->move(ships);
 			(*itr)->show(screen);
-			
+
 			// Check the health of the ship
 			if((*itr)->get_hp() == 0)
 			{
@@ -82,7 +83,7 @@ int main()
 				delete *itr;
 				itr = ships.erase(itr);
 			}
-			
+
 			// Increment itr if the previous ship was not destroyed
 			else
 			{
