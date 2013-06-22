@@ -19,14 +19,19 @@ Ship::Ship(int x , int y, int z)
 	hitBox.y = y;
 	hitBox.w = 37;
 	hitBox.h = 32;
+	// Counter for NPC ships to delay projectile generation
 	count = 0;
 	status = 0;
+	// X velocity
 	v_x = 0;
+	// Y velocity. NPC ships start in motion 
 	v_y = -z;
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
-	hp = 3;
+	// Number of hits ship can take before being destroyed
+	hp = 1;
+	// Sets ship to be PC or NPC. PC type == 0
 	type = z;
 }
 
@@ -85,14 +90,18 @@ void Ship::move(std::vector<Ship*> ships)
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
+	// If ship is an NPC and the delay counter == 0
 	if((type != 0) && count == 0)
 	{
+		// Create new projectile and add to projectiles list 
 		projectiles.push_back(new Projectile(hitBox));
 	}
-	
+	// Increment the delay counter	
 	count++;
+	// If the delay counter has reached 20
 	if(count == 20)
 	{
+		// Reset the counter
 		count = 0;
 	}
 	// Populate hitboxes vector with ship hitboxes
@@ -107,21 +116,27 @@ void Ship::move(std::vector<Ship*> ships)
 	// Keep ship within screen width
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
 	{
+		// Undo X coordinate update
 		hitBox.x -= v_x;
+		// If ship is an NPC
 		if(type != 0)
 		{
+			// Reverse X velocity
 			v_x = -(v_x);
 		}
 	}
-
-	// Keep ship within screen height
-	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0)
+	// If ship is an NPC and has left the screen
+	if((type != 0) && (hitBox.y == 0))
 	{
+		// Destroy the ship
+		hp = 0;
+	}
+
+	// Keep PC ship within screen height
+	else if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0)
+	{
+		// Undo Y coordinate update
 		hitBox.y -= v_y;
-		if(type != 0)
-		{
-			hp = 0;
-		}
 	}
 
 	// Clear the contents of the hitboxes vector for projectile hitboxes
@@ -146,7 +161,6 @@ void Ship::move(std::vector<Ship*> ships)
 		// Check if projectile is still alive
 		if(((*itr)->get_destroy() == true) || handle_collisions((*itr)->get_coords(), ships))
 		{
-			//TODO: Deal damage to ships hit
 			// Clean up list and memory as needed
 			delete *itr;
 			itr = projectiles.erase(itr);
