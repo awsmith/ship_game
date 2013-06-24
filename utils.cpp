@@ -44,6 +44,7 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
+// TODO: Set first argument to type Ship*
 int handle_collisions(SDL_Rect A, std::vector<Ship*> ships)
 {
 	SDL_Rect a = A, b;
