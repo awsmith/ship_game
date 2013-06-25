@@ -32,6 +32,7 @@ class Projectile
 
 		SDL_Surface *image;
 		bool get_destroy();
+                void set_destroy(bool setDestroy);
 
 	private:
 		bool destroy;
