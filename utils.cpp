@@ -44,27 +44,28 @@ void apply_surface(int x, int y, SDL_Surface *source, SDL_Surface *destination, 
 	SDL_BlitSurface(source, clip, destination, &offset);
 }
 
-int handle_collisions(Ship* playerShip, std::vector<Ship*> enemyShips)
+int handle_collisions(Ship* currentShip, std::vector<Ship*> ships)
 {
-	SDL_Rect playerCoords = (*playerShip).get_coords();
-        playerCoords.x += (*playerShip).get_xVel();
-        playerCoords.y += (*playerShip).get_yVel();
+	SDL_Rect currentShipCoords = (*currentShip).get_coords();
+	SDL_Rect originalShipCoords = (*currentShip).get_coords();
+        currentShipCoords.x += (*currentShip).get_xVel();
+        currentShipCoords.y += (*currentShip).get_yVel();
 
         SDL_Rect enemyCoords;
         SDL_Rect projectileCoords;
 	int collisions = 0;
-	std::vector<Ship*>::iterator shipItr = enemyShips.begin();
+	std::vector<Ship*>::iterator shipItr = ships.begin();
         std::list<Projectile*> currentEnemyProjectiles;
         std::list<Projectile*>::iterator projectileItr;
 
-	for(shipItr = enemyShips.begin(); shipItr < enemyShips.end(); shipItr++)
+	for(shipItr = ships.begin(); shipItr < ships.end(); shipItr++)
 	{
 		enemyCoords = (*shipItr)->get_coords();
 		if(check_collision(playerCoords, enemyCoords) == true)
 		{
                   //TODO: change amount of damage taken by impact with a ship
                   collisions++;
-                  (*playerShip).take_damage(0);
+                  (*currentShip).take_damage(0);
 		}
 
                 //Set iterator to current enemy ship projectile list
@@ -73,10 +74,12 @@ int handle_collisions(Ship* playerShip, std::vector<Ship*> enemyShips)
                while(projectileItr != currentEnemyProjectiles.end())
                 {
                   projectileCoords = (*projectileItr)->get_coords();
-                  if(check_collision(playerCoords, projectileCoords) == true)
+                  if(check_collision(currentShipCoords, projectileCoords) == true)
                   {
                     collisions++;
-                    (*playerShip).take_damage((*projectileItr)->get_damage());
+                    (*currentShip).take_damage((*projectileItr)->get_damage());
+                    (*projectileItr)->set_destroy(true);
+
                   }
                   projectileItr++;
                 }
