@@ -61,7 +61,13 @@ int handle_collisions(Ship* currentShip, std::vector<Ship*> ships)
 	for(shipItr = ships.begin(); shipItr < ships.end(); shipItr++)
 	{
 		enemyCoords = (*shipItr)->get_coords();
-		if(check_collision(playerCoords, enemyCoords) == true)
+
+                if((originalShipCoords.x == enemyCoords.x) && (originalShipCoords.y == enemyCoords.y))
+                {
+                  continue;
+                }
+
+		if(check_collision(currentShipCoords, enemyCoords) == true)
 		{
                   //TODO: change amount of damage taken by impact with a ship
                   collisions++;
