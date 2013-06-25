@@ -118,8 +118,11 @@ void Ship::move(std::vector<Ship*> ships)
 			hitboxes.push_back((*itr)->get_hitbox());
 		}
 	}
+}
 
-	// Move projectiles
+void Ship::move_projectiles()
+{
+        std::list<Projectile*>::iterator itr;
 	for(itr = projectiles.begin(); itr != projectiles.end();)
 	{
 		// Move current Projectile
@@ -140,7 +143,9 @@ void Ship::move(std::vector<Ship*> ships)
 		{
 			itr++;
 		}
-	}
+        }
+
+
 }
 
 // Apply Ship to a surface
