@@ -53,6 +53,8 @@ class Ship
 
 		const int get_yVel();
 
+                void move_projectiles();
+
 	private:
 		// Coordinates
 		SDL_Rect offset[2];
