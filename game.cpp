@@ -39,7 +39,7 @@ int main()
 	std::vector<Ship*> ships;
 
 	// Add player and enemy ship to list
-	//ships.push_back(myShip);
+	ships.push_back(myShip);
 
 	ships.push_back(testShip);
 	// Add a bunch of ships for testing
@@ -73,7 +73,11 @@ int main()
 		std::vector<Ship*>::iterator itr = ships.begin();
 		for(itr; itr != ships.end();)
 		{
-			(*itr)->move(ships);
+                        if(handle_collisions((*itr), ships) == 0)
+                        {
+			  (*itr)->move(ships);
+                        }
+                        (*itr)->move_projectiles();
 			(*itr)->show(screen);
 
 			// Check the health of the ship
@@ -90,13 +94,6 @@ int main()
 				itr++;
 			}
 		}
-
-                if(handle_collisions(myShip, ships) == 0)
-                {
-                  (*myShip).move(ships);
-                }
-
-                (*myShip).show(screen);
 
 		// Refresh screen
 		if(SDL_Flip(screen) == -1)
