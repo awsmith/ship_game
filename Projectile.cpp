@@ -108,3 +108,8 @@ bool Projectile::get_destroy()
 {
 	return destroy;
 }
+
+void Projectile::set_destroy(bool setDestroy)
+{
+  destroy = setDestroy;
+}
