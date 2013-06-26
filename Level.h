@@ -8,6 +8,8 @@
 class Level
 {
 	public:
+		// Default constructor
+		Level(std::string filename, std::string level);
 		// TODO: Add file I/O?
 		void set_level();
 		// Push the player to the ships vector
