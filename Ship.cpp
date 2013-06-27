@@ -222,3 +222,48 @@ void Ship::take_damage()
 {
 	hp--;
 }
+
+
+void Ship::ai(std::vector<Ship*> ships)
+{
+	// Store the number of collisions
+	int collisions = 0;
+
+	// Update ships coordinates based on current x, y velocities
+	hitBox.x += v_x;
+	hitBox.y += v_y;
+
+	// If ship is an NPC and the delay counter == 0
+	if(count == 0)
+	{
+		// Create new projectile and add to projectiles list 
+		projectiles.push_back(new Projectile(hitBox, 1));
+	}
+
+	// Increment the delay counter	
+	count++;
+
+	// If the delay counter has reached 20
+	if(count == 20)
+	{
+		// Reset the counter
+		count = 0;
+	}
+
+	// Check for ship to ship collision
+	collisions = handle_collisions(get_coords(), ships);
+
+	// Keep ship within screen width
+	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
+	{
+		// Reverse X velocity
+		v_x = -(v_x);
+	}
+
+	// If NPC ship and has left the screen
+	if(hitBox.y == 480)
+	{
+		// Destroy the ship
+		hp = 0;
+	}
+}
