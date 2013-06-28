@@ -49,6 +49,9 @@ class Ship
 
 		// Reduces hp of ship		
 		void take_damage();
+		
+		// AI for the ship
+		void ai();
 
 	private:
 		// Coordinates
