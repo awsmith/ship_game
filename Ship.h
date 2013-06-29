@@ -51,7 +51,7 @@ class Ship
 		void take_damage();
 		
 		// AI for the ship
-		void ai();
+		void ai(std::vector<Ship*> ships);
 
 	private:
 		// Coordinates
