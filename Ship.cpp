@@ -238,6 +238,9 @@ void Ship::ai(std::vector<Ship*> ships)
 	{
 		// Create new projectile and add to projectiles list 
 		projectiles.push_back(new Projectile(hitBox, 1));
+		int tempVal = v_x;
+		v_x = v_y;
+		v_y = abs(v_x);
 	}
 
 	// Increment the delay counter	
