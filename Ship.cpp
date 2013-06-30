@@ -103,23 +103,6 @@ void Ship::move(std::vector<Ship*> ships)
 	hitBox.x += v_x;
 	hitBox.y += v_y;
 
-	// If ship is an NPC and the delay counter == 0
-	if((type != 0) && count == 0)
-	{
-		// Create new projectile and add to projectiles list 
-		projectiles.push_back(new Projectile(hitBox, 1));
-	}
-
-	// Increment the delay counter	
-	count++;
-
-	// If the delay counter has reached 20
-	if(count == 20)
-	{
-		// Reset the counter
-		count = 0;
-	}
-
 	// Check for ship to ship collision
 	collisions = handle_collisions(get_coords(), ships);
 
@@ -128,18 +111,6 @@ void Ship::move(std::vector<Ship*> ships)
 	{
 		// Undo X coordinate update
 		hitBox.x -= v_x;
-		// If ship is an NPC
-		if(type != 0)
-		{
-			// Reverse X velocity
-			v_x = -(v_x);
-		}
-	}
-	// If ship is an NPC and has left the screen
-	if((type != 0) && (hitBox.y == 480))
-	{
-		// Destroy the ship
-		hp = 0;
 	}
 
 	// Keep PC ship within screen height
@@ -233,25 +204,23 @@ void Ship::ai(std::vector<Ship*> ships)
 	hitBox.x += v_x;
 	hitBox.y += v_y;
 
-	// If ship is an NPC and the delay counter == 0
-	if(count == 0)
+	// If delay counter == 30 
+	if(count == 30)
 	{
 		// Create new projectile and add to projectiles list 
 		projectiles.push_back(new Projectile(hitBox, 1));
+		// Temp variable to swap x and y velocity
 		int tempVal = v_x;
 		v_x = v_y;
+		// Ship will only move towards bottom of screen
 		v_y = abs(v_x);
+
+		// Reset the counter
+		count = 0;
 	}
 
 	// Increment the delay counter	
 	count++;
-
-	// If the delay counter has reached 20
-	if(count == 20)
-	{
-		// Reset the counter
-		count = 0;
-	}
 
 	// Check for ship to ship collision
 	collisions = handle_collisions(get_coords(), ships);
