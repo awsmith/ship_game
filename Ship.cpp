@@ -96,30 +96,37 @@ void Ship::move(std::vector<Ship*> ships)
 {
 	// Iterator to access objects in projectiles	
 	std::list<Projectile*>::iterator itr;
-	// Store the number of collisions
-	int collisions = 0;
-
-	// Update ships coordinates based on current x, y velocities
-	hitBox.x += v_x;
-	hitBox.y += v_y;
-
-	// Check for ship to ship collision
-	collisions = handle_collisions(get_coords(), ships);
-
-	// Keep ship within screen width
-	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
+	if(type != 0)
 	{
-		// Undo X coordinate update
-		hitBox.x -= v_x;
+		ai(ships);
 	}
-
-	// Keep PC ship within screen height
-	else if(((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0) && type == 0)
+	
+	else
 	{
-		// Undo Y coordinate update
-		hitBox.y -= v_y;
-	}
+		// Store the number of collisions
+		int collisions = 0;
 
+		// Update ships coordinates based on current x, y velocities
+		hitBox.x += v_x;
+		hitBox.y += v_y;
+
+		// Check for ship to ship collision
+		collisions = handle_collisions(get_coords(), ships);
+
+		// Keep ship within screen width
+		if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640) || collisions > 0)
+		{
+			// Undo X coordinate update
+			hitBox.x -= v_x;
+		}
+
+		// Keep PC ship within screen height
+		else if(((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480) || collisions > 0) && type == 0)
+		{
+			// Undo Y coordinate update
+			hitBox.y -= v_y;
+		}
+	}
 	// Move projectiles
 	for(itr = projectiles.begin(); itr != projectiles.end();)
 	{
