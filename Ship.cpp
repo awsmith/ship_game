@@ -220,7 +220,7 @@ void Ship::ai(std::vector<Ship*> ships)
 		int tempVal = v_x;
 		v_x = v_y;
 		// Ship will only move towards bottom of screen
-		v_y = abs(v_x);
+		v_y = tempVal;
 
 		// Reset the counter
 		count = 0;
@@ -237,6 +237,13 @@ void Ship::ai(std::vector<Ship*> ships)
 	{
 		// Reverse X velocity
 		v_x = -(v_x);
+	}
+	
+	// If NPC ship hits top of screen
+	if((hitBox.y + hitBox.h) < -30)
+	{
+		// Reverse velocity
+		v_y = -(v_y);
 	}
 
 	// If NPC ship and has left the screen
