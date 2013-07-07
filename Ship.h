@@ -55,6 +55,8 @@ class Ship
 
                 void move_projectiles();
 
+		void ai();
+
 	private:
 		// Coordinates
 		SDL_Rect offset[2];
