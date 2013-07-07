@@ -174,3 +174,33 @@ const int Ship::get_yVel()
 {
   return v_y;
 }
+
+// Handle NPC ship actions
+void Ship::ai()
+{
+
+	// Update ships coordinates based on current x, y velocities
+	hitBox.x += v_x;
+	hitBox.y += v_y;
+
+	// Keep ship within screen width
+	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
+	{
+		// Remove hitbox update to keep NPC on screen
+		hitBox.x -= v_x;
+		// Reverse velocity to stop ship from going in x direction 
+		v_x = -v_x;
+	}
+
+	// Keep ship within screen height
+	if((hitBox.y < 0))
+	{
+		// Reverse y velocity to keep ship on screen
+		v_y = -v_y;
+	}
+	
+	else if((hitBox.y + hitBox.h) > 480)
+	{
+		// TODO: Remove NPC ship from vector
+	}
+}
