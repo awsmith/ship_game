@@ -82,6 +82,9 @@ class Ship
 
                 // List of projectiles produced by ship
                 std::list<Projectile*> projectiles;
+	
+		// Attack delay
+		int projDelay;
 
 };
 
