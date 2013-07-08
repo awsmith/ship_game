@@ -27,6 +27,7 @@ Ship::Ship(int x , int y)
 	image = load_image(filename);
 	frame = 1;
 	hp = 1;
+	projDelay = 0;
 }
 
 // Destructor
@@ -182,7 +183,16 @@ void Ship::ai()
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
+	// Increment delay counter for NPC attack
+	projDelay++;	
 
+	if(projDelay == 40)
+	{
+		// Create new projectile
+		projectiles.push_back(new Projectile(hitBox))	
+		// Reset counter
+		projDelay = 0;	
+	}
 	// Keep ship within screen width
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
 	{
