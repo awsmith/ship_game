@@ -69,7 +69,7 @@ void Ship::handle_input(SDL_Event &event)
 }
 
 // Move Ship and hitbox
-void Ship::move(std::vector<Ship*> ships)
+void Ship::move()
 {
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
