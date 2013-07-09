@@ -75,7 +75,7 @@ int main()
 		{
                         if(handle_collisions((*itr), ships) == 0)
                         {
-			  (*itr)->move(ships);
+			  (*itr)->move();
                         }
                         (*itr)->move_projectiles();
 			(*itr)->show(screen);
