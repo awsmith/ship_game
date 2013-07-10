@@ -189,7 +189,7 @@ void Ship::ai()
 	if(projDelay == 40)
 	{
 		// Create new projectile
-		projectiles.push_back(new Projectile(hitBox))	
+		projectiles.push_back(new Projectile(hitBox));
 		// Reset counter
 		projDelay = 0;	
 	}
