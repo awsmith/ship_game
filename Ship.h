@@ -83,6 +83,8 @@ class Ship
                 // List of projectiles produced by ship
                 std::list<Projectile*> projectiles;
 
+		// PC or NPC
+		std::string type;
 };
 
 #endif
