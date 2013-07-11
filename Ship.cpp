@@ -2,7 +2,7 @@
 #include "Ship.h"
 
 // Constructor
-Ship::Ship(int x , int y)
+Ship::Ship(int x , int y, std::string type)
 {
 	// First frame of ship animation
         offset[0].x = 0;
@@ -28,6 +28,7 @@ Ship::Ship(int x , int y)
 	frame = 1;
 	hp = 1;
 	projDelay = 0;
+	this->type = type;
 }
 
 // Destructor
