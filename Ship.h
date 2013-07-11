@@ -13,7 +13,7 @@ class Ship
 {
   public:
   		// Constructor
-		Ship(int x = 0, int y = 0);
+		Ship(int x = 0, int y = 0, std::string type = "NPC");
 
 		// Destructor
 		~Ship();
