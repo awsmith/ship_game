@@ -22,7 +22,7 @@ class Ship
 		void handle_input(SDL_Event &event);
 
 		// Move ship and hitbox
-		void move(std::vector<Ship*> ships);
+		void move();
 
 		// Apply ship to a surface
 		void show(SDL_Surface *destination);
@@ -82,6 +82,9 @@ class Ship
 
                 // List of projectiles produced by ship
                 std::list<Projectile*> projectiles;
+	
+		// Attack delay
+		int projDelay;
 
 		// PC or NPC
 		std::string type;
