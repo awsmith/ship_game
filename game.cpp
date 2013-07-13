@@ -104,6 +104,12 @@ int main()
 		{
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps->get_ticks());
 		}
+		
+		// If the player is dead
+		if(myShip->get_hp() == 0)
+		{
+			quit = true;
+		}
 	}
 	delete myShip;
 	delete fps;
