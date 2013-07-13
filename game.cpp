@@ -31,7 +31,7 @@ int main()
 	}
 
 	// Class instances
-	Ship *myShip = new Ship(100, 100);
+	Ship *myShip = new Ship(100, 100, "PC");
 	Timer *fps = new Timer;
 
 	// List to hold all ships
