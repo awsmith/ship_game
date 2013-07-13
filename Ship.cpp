@@ -46,7 +46,7 @@ void Ship::handle_input(SDL_Event &event)
 	{
 		switch(event.key.keysym.sym)
 		{
-			// Create projectile
+			// Create regular projectile
 			case SDLK_SPACE: projectiles.push_back(new Projectile(hitBox)); break;
 			// Increase velocity for desired direction
 			case SDLK_UP: v_y -= hitBox.h / 4; break;
@@ -158,7 +158,7 @@ const int Ship::get_hp()
 //Return the ship's list of projectiles
 std::list<Projectile*> Ship::get_projectiles()
 {
-  return projectiles;
+	return projectiles;
 }
 
 // Reduce hp of ship
@@ -167,23 +167,25 @@ void Ship::take_damage(int damageDealt)
 	hp -= damageDealt;
 }
 
+// Return velocity along the x-axis
 const int Ship::get_xVel()
 {
-  return v_x;
+	return v_x;
 }
 
+// Return velocity along the y-axis
 const int Ship::get_yVel()
 {
-  return v_y;
+	return v_y;
 }
 
 // Handle NPC ship actions
 void Ship::ai()
 {
-
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
+
 	// Increment delay counter for NPC attack
 	projDelay++;	
 
@@ -194,6 +196,7 @@ void Ship::ai()
 		// Reset counter
 		projDelay = 0;	
 	}
+
 	// Keep ship within screen width
 	if((hitBox.x < 0) || ((hitBox.x + hitBox.w) > 640))
 	{
@@ -209,9 +212,11 @@ void Ship::ai()
 		// Reverse y velocity to keep ship on screen
 		v_y = -v_y;
 	}
-	
-	else if((hitBox.y + hitBox.h) > 480)
+
+	// If the ship leaves the bottom of the screen	
+	else if((hitBox.y + hitBox.h) > 510)
 	{
-		// TODO: Remove NPC ship from vector
+		// Set hp to 0 to kill NPC
+		hp = 0;
 	}
 }
