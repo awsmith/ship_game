@@ -4,21 +4,43 @@
 // Constructor
 Ship::Ship(int x , int y, std::string type)
 {
-	// First frame of ship animation
-        offset[0].x = 0;
-	offset[0].y = 0;
-	offset[0].w = 37;
-	offset[0].h = 32;
-	// Second frame of ship animation
-        offset[1].x = 40;
-	offset[1].y = 0;
-	offset[1].w = 37;
-	offset[1].h = 32;
-	// Coordinates for ship
-	hitBox.x = x;
-	hitBox.y = y;
-	hitBox.w = 37;
-	hitBox.h = 32;
+	if(type == "PC")
+	{
+		// First frame of ship animation
+		offset[0].x = 0;
+		offset[0].y = 0;
+		offset[0].w = 37;
+		offset[0].h = 32;
+		// Second frame of ship animation
+		offset[1].x = 40;
+		offset[1].y = 0;
+		offset[1].w = 37;
+		offset[1].h = 32;
+		// Coordinates for ship
+		hitBox.x = x;
+		hitBox.y = y;
+		hitBox.w = 37;
+		hitBox.h = 32;
+	}
+	
+	else
+	{
+		// First frame of ship animation
+		offset[0].x = 92;
+		offset[0].y = 30;
+		offset[0].w = 53;
+		offset[0].h = 28;
+		// Second frame of ship animation
+		offset[1].x = 92;
+		offset[1].y = 30;
+		offset[1].w = 53;
+		offset[1].h = 28;
+		// Coordinates for ship
+		hitBox.x = x;
+		hitBox.y = y;
+		hitBox.w = 53;
+		hitBox.h = 28;
+	}
 
 	status = 0;
 	v_x = 0;
