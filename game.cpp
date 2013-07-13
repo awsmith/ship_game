@@ -32,23 +32,21 @@ int main()
 
 	// Class instances
 	Ship *myShip = new Ship(100, 100);
-	Ship *testShip = new Ship(100, 200);;
 	Timer *fps = new Timer;
 
 	// List to hold all ships
 	std::vector<Ship*> ships;
 
-	// Add player and enemy ship to list
+	// Add player and enemy ships to list
 	ships.push_back(myShip);
 
-	ships.push_back(testShip);
-	// Add a bunch of ships for testing
 	ships.push_back(new Ship(100, 200));
 	ships.push_back(new Ship(100, 300));
 	ships.push_back(new Ship(200, 200));
 	ships.push_back(new Ship(400, 200));
 	ships.push_back(new Ship(140, 350));
 	ships.push_back(new Ship(390, 0));
+
 	// While the user has not quit
 	while(quit == false)
 	{
@@ -108,7 +106,6 @@ int main()
 		}
 	}
 	delete myShip;
-	delete testShip;
 	delete fps;
 	SDL_Quit;
 	return 0;
