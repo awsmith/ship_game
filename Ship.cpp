@@ -69,7 +69,7 @@ void Ship::handle_input(SDL_Event &event)
 		switch(event.key.keysym.sym)
 		{
 			// Create regular projectile
-			case SDLK_SPACE: projectiles.push_back(new Projectile(hitBox)); break;
+			case SDLK_SPACE: projectiles.push_back(new Projectile(hitBox, "up")); break;
 			// Increase velocity for desired direction
 			case SDLK_UP: v_y -= hitBox.h / 4; break;
 			case SDLK_DOWN: v_y += hitBox.h / 4; break;
@@ -94,6 +94,8 @@ void Ship::handle_input(SDL_Event &event)
 // Move Ship and hitbox
 void Ship::move()
 {
+	if(type == "PC")
+	{
 	// Update ships coordinates based on current x, y velocities
 	hitBox.x += v_x;
 	hitBox.y += v_y;
@@ -108,6 +110,11 @@ void Ship::move()
 	if((hitBox.y < 0) || ((hitBox.y + hitBox.h) > 480))
 	{
 		hitBox.y -= v_y;
+	}
+	}
+	else
+	{
+		ai();
 	}
 }
 
@@ -214,7 +221,7 @@ void Ship::ai()
 	if(projDelay == 40)
 	{
 		// Create new projectile
-		projectiles.push_back(new Projectile(hitBox));
+		projectiles.push_back(new Projectile(hitBox, "down"));
 		// Reset counter
 		projDelay = 0;	
 	}
