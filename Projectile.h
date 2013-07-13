@@ -9,7 +9,7 @@
 class Projectile
 {
 	public:
-		Projectile(SDL_Rect origin);
+		Projectile(SDL_Rect origin, std::string direction);
 		~Projectile();
 
 		//Move projectile
