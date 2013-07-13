@@ -5,7 +5,9 @@
 // Default constructor
 Projectile::Projectile(SDL_Rect origin)
 {
+	// Flag for projectile deletion
 	destroy = false;
+
 	// Clip first image for projectile animation
 	offset[0].x = 50;
 	offset[0].y = 78;
@@ -17,6 +19,7 @@ Projectile::Projectile(SDL_Rect origin)
 	offset[1].w = 8;
 	offset[1].h = 13;
 
+	// TODO:What is this for?
 	status = 0;
 
 	// Projectile velocities
@@ -35,7 +38,7 @@ Projectile::Projectile(SDL_Rect origin)
 	hitBox.h = 13;
 
         //Damage dealt by projectile
-        damage = 0;
+        damage = 1;
 }
 
 // Destructor
