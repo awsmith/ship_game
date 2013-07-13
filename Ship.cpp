@@ -21,8 +21,11 @@ Ship::Ship(int x , int y, std::string type)
 		hitBox.y = y;
 		hitBox.w = 37;
 		hitBox.h = 32;
+		v_x = 0;
+		v_y = 0;
 	}
-	
+
+	// First NPC ship	
 	else
 	{
 		// First frame of ship animation
@@ -40,11 +43,11 @@ Ship::Ship(int x , int y, std::string type)
 		hitBox.y = y;
 		hitBox.w = 53;
 		hitBox.h = 28;
+		v_x = 0;
+		v_y = 3;
 	}
 
 	status = 0;
-	v_x = 0;
-	v_y = 0;
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
