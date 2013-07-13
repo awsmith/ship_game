@@ -3,39 +3,68 @@
 #include <iostream>
 
 // Default constructor
-Projectile::Projectile(SDL_Rect origin)
+Projectile::Projectile(SDL_Rect origin, std::string direction)
 {
 	// Flag for projectile deletion
 	destroy = false;
 
-	// Clip first image for projectile animation
-	offset[0].x = 50;
-	offset[0].y = 78;
-	offset[0].w = 8;
-	offset[0].h = 13;
-	// Clip second image for projectile animation
-	offset[1].x = 50;
-	offset[1].y = 78;
-	offset[1].w = 8;
-	offset[1].h = 13;
+	if(direction == "up")
+	{
+		// Clip first image for projectile animation
+		offset[0].x = 50;
+		offset[0].y = 78;
+		offset[0].w = 8;
+		offset[0].h = 13;
+		// Clip second image for projectile animation
+		offset[1].x = 50;
+		offset[1].y = 78;
+		offset[1].w = 8;
+		offset[1].h = 13;
+
+		// Projectile velocities
+		v_x = 0;
+		v_y = -6;
+
+		// Projectile spawned at top center of ship
+		hitBox.x = origin.x + 4;
+		hitBox.y = origin.y - 10;
+		hitBox.w = 8;
+		hitBox.h = 13;
+	}
+
+	if(direction == "down")
+	{
+		// Clip first image for projectile animation
+		offset[0].x = 50;
+		offset[0].y = 98;
+		offset[0].w = 8;
+		offset[0].h = 13;
+		// Clip second image for projectile animation
+		offset[1].x = 50;
+		offset[1].y = 98;
+		offset[1].w = 8;
+		offset[1].h = 13;
+
+		// Projectile velocities
+		v_x = 0;
+		v_y = 6;
+
+		// Projectile spawned at top center of ship
+		hitBox.x = origin.x + 4;
+		hitBox.y = origin.y + 10;
+		hitBox.w = 8;
+		hitBox.h = 13;
+	}
 
 	// TODO:What is this for?
 	status = 0;
 
-	// Projectile velocities
-	v_x = 0;
-	v_y = -6;
 
 	// Set image filename and load in
 	filename = "ship.png";
 	image = load_image(filename);
 	frame = 1;
 
-	// Projectile spawned at top center of ship
-	hitBox.x = origin.x + 4;
-	hitBox.y = origin.y - 10;
-	hitBox.w = 8;
-	hitBox.h = 13;
 
         //Damage dealt by projectile
         damage = 1;
