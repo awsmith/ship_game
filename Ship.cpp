@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Ship.h"
-
+// Updated ship image added to Drive on 7/18/13
 // Constructor
 Ship::Ship(int x , int y, std::string type)
 {
@@ -29,20 +29,20 @@ Ship::Ship(int x , int y, std::string type)
 	else
 	{
 		// First frame of ship animation
-		offset[0].x = 92;
-		offset[0].y = 30;
+		offset[0].x = 0;
+		offset[0].y = 71;
 		offset[0].w = 53;
-		offset[0].h = 28;
+		offset[0].h = 38;
 		// Second frame of ship animation
-		offset[1].x = 92;
-		offset[1].y = 30;
+		offset[1].x = 0;
+		offset[1].y = 110;
 		offset[1].w = 53;
-		offset[1].h = 28;
+		offset[1].h = 38;
 		// Coordinates for ship
 		hitBox.x = x;
 		hitBox.y = y;
 		hitBox.w = 53;
-		hitBox.h = 28;
+		hitBox.h = 38;
 		v_x = 0;
 		v_y = 3;
 	}
