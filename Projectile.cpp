@@ -1,7 +1,7 @@
 #include "Projectile.h"
 #include "utils.h"
 #include <iostream>
-
+// Updated ship image added to Drive on 7/18/13
 // Default constructor
 Projectile::Projectile(SDL_Rect origin, std::string direction)
 {
@@ -11,13 +11,13 @@ Projectile::Projectile(SDL_Rect origin, std::string direction)
 	if(direction == "up")
 	{
 		// Clip first image for projectile animation
-		offset[0].x = 50;
-		offset[0].y = 78;
+		offset[0].x = 126;
+		offset[0].y = 134;
 		offset[0].w = 8;
 		offset[0].h = 13;
 		// Clip second image for projectile animation
-		offset[1].x = 50;
-		offset[1].y = 78;
+		offset[1].x = 126;
+		offset[1].y = 134;
 		offset[1].w = 8;
 		offset[1].h = 13;
 
@@ -35,13 +35,13 @@ Projectile::Projectile(SDL_Rect origin, std::string direction)
 	if(direction == "down")
 	{
 		// Clip first image for projectile animation
-		offset[0].x = 50;
-		offset[0].y = 98;
+		offset[0].x = 134;
+		offset[0].y = 134;
 		offset[0].w = 8;
 		offset[0].h = 13;
 		// Clip second image for projectile animation
-		offset[1].x = 50;
-		offset[1].y = 98;
+		offset[1].x = 134;
+		offset[1].y = 134;
 		offset[1].w = 8;
 		offset[1].h = 13;
 
